@@ -1,0 +1,75 @@
+{
+  "name": "solcre/bamboopaymen-sdk",
+  "type": "library",
+  "description": "PHP SDK to interact with BambooPayments API",
+  "keywords": [
+    "solcre",
+    "BamboopaymentSdk"
+  ],
+  "homepage": "https://github.com/solcre/BamboopaymentSdk",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Diego",
+      "email": "diego.sorribas@solcre.com",
+      "homepage": "https://solcre.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^7.4",
+    "ext-json": "*",
+    "guzzlehttp/guzzle": "^7.3",
+    "ocramius/generated-hydrator": "^4.1"
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^2.18",
+    "phpstan/phpstan": "^0.12.83",
+    "phpstan/phpstan-phpunit": "^0.12.18",
+    "phpstan/phpstan-strict-rules": "^0.12.9",
+    "phpunit/phpunit": "^9.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "BambooPayment\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "BambooPaymentTests\\": "tests"
+    }
+  },
+  "scripts": {
+    "phpcs": "php-cs-fixer fix -vvv --diff --dry-run --allow-risky=yes --ansi",
+    "phpcs:fix": "php-cs-fixer fix -vvv --allow-risky=yes --ansi",
+    "phpstan": "phpstan analyse -l 5 -c phpstan.neon src tests --ansi --memory-limit=192M",
+    "phpunit-with-coverage": "phpunit --coverage-text",
+    "phpunit": "phpunit --no-coverage",
+    "test": [
+      "@phpunit-with-coverage",
+      "@phpstan",
+      "@phpcs:fix",
+      "@phpcs"
+    ]
+  },
+  "scripts-descriptions": {
+    "phpcs": "Runs coding style test suite",
+    "phpstan": "Runs complete codebase static analysis",
+    "phpunit": "Runs unit and functional testing",
+    "test": "Runs full test suite"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    },
+    "hooks": {
+      "commit-msg": "grep -w \"feat\\|fix\\|docs\\|test\\|breaking\" $1 | grep \": \" $1",
+      "pre-push": [
+        "composer test"
+      ]
+    }
+  },
+  "config": {
+    "sort-packages": true
+  }
+}

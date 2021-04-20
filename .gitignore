@@ -1,0 +1,14 @@
+composer.lock
+vendor
+phpcs.xml
+phpunit.xml
+.phpunit.result.cache
+.idea
+.php_cs.cache
+build/*
+public
+docker-compose.yml
+docker
+/.phpcs-cache
+/.phpunit.cache/
+clover.xml

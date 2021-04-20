@@ -1,0 +1,13 @@
+{
+  "getCustomer": {
+    "data": "{\"Response\":{\"CustomerId\":53479,\"Created\":\"2021-04-06T16:08:43.767\",\"CommerceCustomerId\":null,\"Owner\":\"Commerce\",\"Email\":\"Email222222@bamboopayment.com\",\"Enabled\":true,\"ShippingAddress\":null,\"BillingAddress\":{\"AddressId\":51615,\"AddressType\":1,\"Country\":\"UY\",\"State\":\"Montevideo\",\"AddressDetail\":\"10000\",\"PostalCode\":null,\"City\":\"MONTEVIDEO\"},\"Plans\":null,\"AdditionalData\":null,\"PaymentProfiles\":[],\"CaptureURL\":\"https://testapi.siemprepago.com/v1/Capture/\",\"UniqueID\":\"UI_f6094ccb-7140-480d-af2f-52ea1fe35d6b\",\"URL\":\"https://testapi.siemprepago.com/v1/api/Customer/53479\",\"FirstName\":\"PrimerNombre 2222\",\"LastName\":\"PrimerApellido 2222\",\"DocNumber\":\"12345672\",\"DocumentTypeId\":2,\"PhoneNumber\":\"24022330\"},\"Errors\":[]}"
+  },
+  "getCustomerByEmail": {
+    "data": "{\"Response\":[{\"CustomerId\":53479,\"Created\":\"2021-04-06T19:08:43.767\",\"CommerceCustomerId\":null,\"Owner\":\"Commerce\",\"Email\":\"Email222222@bamboopayment.com\",\"Enabled\":true,\"ShippingAddress\":null,\"BillingAddress\":{\"AddressId\":51615,\"AddressType\":1,\"Country\":\"UY\",\"State\":\"Montevideo\",\"AddressDetail\":\"10000\",\"PostalCode\":null,\"City\":\"MONTEVIDEO\"},\"Plans\":null,\"AdditionalData\":null,\"PaymentProfiles\":[],\"CaptureURL\":\"https://testapi.siemprepago.com/v1/Capture/\",\"UniqueID\":\"UI_079857a3-1b69-4521-8a8c-358a2420bf19\",\"URL\":\"https://testapi.siemprepago.com/v1/api/Customer/53479\",\"FirstName\":\"PrimerNombre 2222\",\"LastName\":\"PrimerApellido 2222\",\"DocNumber\":\"12345672\",\"DocumentTypeId\":2,\"PhoneNumber\":\"24022330\"}],\"Errors\":[]}"
+  },
+  "createCustomerWithoutEmail": {
+    "data": "{\"Response\":{\"CustomerId\":0,\"Created\":null,\"CommerceCustomerId\":null,\"Owner\":null,\"Email\":null,\"Enabled\":true,\"ShippingAddress\":null,\"BillingAddress\":{\"AddressId\":0,\"AddressType\":1,\"Country\":\"UY\",\"State\":\"Montevideo\",\"AddressDetail\":\"10000\",\"PostalCode\":null,\"City\":\"MONTEVIDEO\"},\"Plans\":null,\"AdditionalData\":null,\"PaymentProfiles\":null,\"CaptureURL\":null,\"UniqueID\":null,\"URL\":null,\"FirstName\":\"PrimerNombre\",\"LastName\":\"PrimerApellido\",\"DocNumber\":\"12345672\",\"DocumentTypeId\":2,\"PhoneNumber\":\"24022330\"},\"Errors\":[{\"ErrorCode\":\"CS001\",\"Created\":\"2021-04-12T19:07:18.980\",\"Message\":\"Email invalido\",\"Detail\":null}]}"
+  }
+}
+
+
