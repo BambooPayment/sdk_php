@@ -1,12 +1,15 @@
 {
-  "name": "solcre/bamboopaymen-sdk",
+  "name": "bamboopayment/bamboopayment-sdk",
   "type": "library",
   "description": "PHP SDK to interact with BambooPayments API",
   "keywords": [
     "solcre",
-    "BamboopaymentSdk"
+    "bamboopayment",
+    "sdk",
+    "php",
+    "pci"
   ],
-  "homepage": "https://github.com/solcre/BamboopaymentSdk",
+  "homepage": "https://bamboopayment.com",
   "license": "MIT",
   "authors": [
     {
