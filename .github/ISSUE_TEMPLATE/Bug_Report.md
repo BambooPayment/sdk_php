@@ -31,8 +31,8 @@ _(What is the current (buggy) behavior?)_
 
 ## Checks before submitting
 
-* [ ] Be sure that there isn't already an issue about this. See: [Issues list](https://github.com/thephpleague/csv/issues)
-* [ ] Be sure that there isn't already a pull request about this. See: [Pull requests](https://github.com/thephpleague/csv/pulls)
+* [ ] Be sure that there isn't already an issue about this. See: [Issues list](https://github.com/BambooPayment/sdk_php/issues)
+* [ ] Be sure that there isn't already a pull request about this. See: [Pull requests](https://github.com/BambooPayment/sdk_php/pulls)
 * [ ] I have added every step to reproduce the bug.
 * [ ] If possible I added relevant code examples.
 * [ ] This issue is about 1 bug and nothing more.

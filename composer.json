@@ -61,12 +61,6 @@
   "extra": {
     "branch-alias": {
       "dev-master": "1.0-dev"
-    },
-    "hooks": {
-      "commit-msg": "grep -w \"feat\\|fix\\|docs\\|test\\|breaking\" $1 | grep \": \" $1",
-      "pre-push": [
-        "composer test"
-      ]
     }
   },
   "config": {
