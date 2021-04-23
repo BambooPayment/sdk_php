@@ -74,6 +74,15 @@ class Customer extends BambooPaymentObject
             $data['BillingAddress'] = $address->hydrate($billingAddress);
         }
 
+        $paymentProfiles = $data['PaymentProfiles'] ?? [];
+        if (\count($paymentProfiles) > 0) {
+            $data['PaymentProfiles'] = [];
+            foreach ($paymentProfiles as $paymentProfileData) {
+                $PaymentProfile            = new PaymentProfile();
+                $data['PaymentProfiles'][] = $PaymentProfile->hydrate($paymentProfileData);
+            }
+        }
+
         return parent::hydrate($data);
     }
 
