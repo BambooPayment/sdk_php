@@ -20,7 +20,7 @@ $customer = $bambooPaymentClient->customers->fetch(customerId);
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-[ico-version]: https://img.shields.io/packagist/v/solcre/bamboopayment-sdk.svg?style=flat-square
+[ico-version]: https://img.shields.io/packagist/v/bamboopayment/bamboopayment-sdk.svg?style=flat-square
 
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
 
@@ -28,15 +28,15 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 
 [ico-coveralls]: https://coveralls.io/repos/github/BambooPayment/sdk_php/badge.svg?branch=master&kill_cache=1
 
-[ico-downloads]: https://img.shields.io/packagist/dt/solcre/bamboopayment-sdk.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/bamboopayment/bamboopayment-sdk.svg?style=flat-square
 
-[link-packagist]: https://packagist.org/packages/solcre/bamboopayment-sdk
+[link-packagist]: https://packagist.org/packages/bamboopayment/bamboopayment-sdk
 
 [link-github]: https://github.com/BambooPayment/sdk_php/actions?query=workflow%3A%22build%22
 
 [link-coveralls]: https://coveralls.io/github/BambooPayment/sdk_php?branch=master
 
-[link-downloads]: https://packagist.org/packages/solcre/bamboopayment-sdk
+[link-downloads]: https://packagist.org/packages/bamboopayment/bamboopayment-sdk
 
 [link-author]: https://github.com/BambooPayment/sdk_php
 

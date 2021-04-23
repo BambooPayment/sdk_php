@@ -1,13 +1,15 @@
 {
   "name": "bamboopayment/bamboopayment-sdk",
   "type": "library",
-  "description": "PHP SDK to interact with BambooPayments API",
+  "description": "PHP SDK to interact with BambooPayment PCI API",
   "keywords": [
-    "solcre",
     "bamboopayment",
     "sdk",
     "php",
-    "pci"
+    "siempre",
+    "pago",
+    "pci",
+    "payments"
   ],
   "homepage": "https://bamboopayment.com",
   "license": "MIT",
