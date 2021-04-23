@@ -26,7 +26,7 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 
 [ico-github]:  https://github.com/BambooPayment/sdk_php/workflows/build/badge.svg
 
-[ico-coveralls]: https://coveralls.io/repos/github/solcre-org/test-ci-php/badge.svg?branch=main&kill_cache=1
+[ico-coveralls]: https://coveralls.io/repos/github/BambooPayment/sdk_php/badge.svg?branch=master&kill_cache=1
 
 [ico-downloads]: https://img.shields.io/packagist/dt/solcre/bamboopayment-sdk.svg?style=flat-square
 
@@ -34,10 +34,10 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 
 [link-github]: https://github.com/BambooPayment/sdk_php/actions?query=workflow%3A%22build%22
 
-[link-coveralls]: https://coveralls.io/github/solcre-org/test-ci-php?branch=main
+[link-coveralls]: https://coveralls.io/github/BambooPayment/sdk_php?branch=master
 
 [link-downloads]: https://packagist.org/packages/solcre/bamboopayment-sdk
 
-[link-author]: https://github.com/diego-sorribas
+[link-author]: https://github.com/BambooPayment/sdk_php
 
 [link-contributors]: ../../contributors
