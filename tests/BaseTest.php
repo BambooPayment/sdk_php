@@ -32,7 +32,7 @@ abstract class BaseTest extends TestCase
     /**
      * @throws \JsonException
      */
-    private function getMockData($filename, $endpoint): ?string
+    public function getMockData($filename, $endpoint): ?string
     {
         $data     = null;
         $filename = __DIR__ . '/Data/' . $filename . '.json';

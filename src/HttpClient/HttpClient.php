@@ -10,7 +10,7 @@ use function array_merge;
 use function is_callable;
 use function strtolower;
 
-final class HttpClient
+class HttpClient
 {
     protected static ?HttpClient $instance = null;
 

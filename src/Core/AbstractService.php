@@ -19,11 +19,6 @@ abstract class AbstractService
         return $this->request('post', $this->getBaseUri(), $params);
     }
 
-    public function delete(int $id, ?array $params = null): BambooPaymentObject
-    {
-        return $this->request('delete', sprintf($this->getBaseUri() . '/%s', $id), $params);
-    }
-
     public function fetch(int $id): BambooPaymentObject
     {
         return $this->request('get', sprintf($this->getBaseUri() . '/%s', $id));
@@ -71,7 +66,7 @@ abstract class AbstractService
         return $result;
     }
 
-    protected function convertToBambooPaymentObject(array $response): ?BambooPaymentObject
+    public function convertToBambooPaymentObject(array $response): ?BambooPaymentObject
     {
         $class  = $this->getEntityClass();
         $object = new $class();

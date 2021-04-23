@@ -70,7 +70,7 @@ class ApiRequest
         return new ApiResponse($response->getBody(), $response->getStatusCode(), $response->getHeaders());
     }
 
-    /**
+    /**f
      * @static
      *
      * @param string $apiKey

@@ -49,7 +49,8 @@ class CustomerServiceTest extends BaseTest
                 'AddressDetail' => '10000',
                 'PostalCode'    => null,
                 'City'          => 'MONTEVIDEO'
-            ]);
+            ]
+        );
 
         self::assertEquals(
             [
@@ -100,5 +101,37 @@ class CustomerServiceTest extends BaseTest
                 ]
             ]
         );
+    }
+
+    public function testUpdateCustomer(): void
+    {
+        $bambooPaymentClient = $this->createBambooClientWithApiRequestMocked('customers', 'update');
+        $service             = new CustomerService($bambooPaymentClient);
+        $customer            = $service->update(
+            53479,
+            [
+                'CustomerId'         => 53479,
+                'Created'            => '2021-04-06T16:08:43.767',
+                'CommerceCustomerId' => null,
+                'Owner'              => 'Commerce',
+                'Email'              => 'Email@bamboopayment.com',
+                'Enabled'            => true,
+                'ShippingAddress'    => null,
+                'BillingAddress'     => [],
+                'AdditionalData'     => null,
+                'PaymentProfiles'    => [],
+                'CaptureURL'         => 'https://testapi.siemprepago.com/v1/Capture/',
+                'UniqueID'           => 'UI_f6094ccb-7140-480d-af2f-52ea1fe35d6b',
+                'URL'                => 'https://testapi.siemprepago.com/v1/api/Customer/53479',
+                'FirstName'          => 'PrimerNombre 2222',
+                'LastName'           => 'PrimerApellido 2222',
+                'DocNumber'          => '12345672',
+                'DocumentTypeId'     => 2,
+                'PhoneNumber'        => '24022330'
+            ]
+        );
+
+        self::assertInstanceOf(Customer::class, $customer);
+        self::assertEquals('Email222222@bamboopayment.com', $customer->getEmail());
     }
 }
