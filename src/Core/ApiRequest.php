@@ -136,7 +136,7 @@ class ApiRequest
     {
         $errorHandler = new ErrorHandler();
         try {
-            if ($code < 200 || $code > 300) {
+            if ($code < 200 || $code > 400) {
                 throw new InvalidRequestException('Invalid API route or response', $code, $body, null, null);
             }
 

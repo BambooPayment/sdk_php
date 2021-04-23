@@ -7,8 +7,9 @@ use BambooPayment\Entity\Customer;
 
 class CustomerService extends AbstractService
 {
-    private const BASE_URI            = 'v1/api/customer';
-    private const FETCH_USER_BY_EMAIL = 'v1/api/customer/GetCustomerByEmail';
+    private const BASE_URI                   = 'v1/api/customer';
+    private const FETCH_USER_BY_EMAIL        = 'v1/api/customer/GetCustomerByEmail';
+    private const DELETE_PAYMENT_PROFILE_URI = '/%s/PaymentProfileDelete';
 
     public function getBaseUri(): string
     {
@@ -28,5 +29,16 @@ class CustomerService extends AbstractService
     public function getEntityClass(): string
     {
         return Customer::class;
+    }
+
+    public function deletePaymentProfile(int $customerId, int $paymentProfileId)
+    {
+        return $this->request(
+            self::POST_METHOD,
+            sprintf(self::BASE_URI . self::DELETE_PAYMENT_PROFILE_URI, $customerId),
+            [
+                'PaymentProfileId' => $paymentProfileId
+            ]
+        );
     }
 }

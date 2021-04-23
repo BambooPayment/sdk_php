@@ -7,6 +7,9 @@ use function is_array;
 
 abstract class AbstractService
 {
+    protected const GET_METHOD  = 'get';
+    protected const POST_METHOD = 'post';
+
     protected BambooPaymentClient $client;
 
     public function __construct(BambooPaymentClient $client)
@@ -16,17 +19,17 @@ abstract class AbstractService
 
     public function create(?array $params = null): BambooPaymentObject
     {
-        return $this->request('post', $this->getBaseUri(), $params);
+        return $this->request(self::POST_METHOD, $this->getBaseUri(), $params);
     }
 
     public function fetch(int $id): BambooPaymentObject
     {
-        return $this->request('get', sprintf($this->getBaseUri() . '/%s', $id));
+        return $this->request(self::GET_METHOD, sprintf($this->getBaseUri() . '/%s', $id));
     }
 
     public function update(int $id, ?array $params = null): BambooPaymentObject
     {
-        return $this->request('post', sprintf($this->getBaseUri() . '/%s/update', $id), $params);
+        return $this->request(self::POST_METHOD, sprintf($this->getBaseUri() . '/%s/update', $id), $params);
     }
 
     public function all(array $params = []): array
@@ -54,7 +57,7 @@ abstract class AbstractService
         string $path,
         ?array $params = null
     ): array {
-        $response = $this->client->request($this->client->createApiRequest('get', $path, $params));
+        $response = $this->client->request($this->client->createApiRequest(self::GET_METHOD, $path, $params));
 
         $result = [];
         foreach ($response as $item) {

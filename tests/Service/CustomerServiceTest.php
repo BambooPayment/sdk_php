@@ -134,4 +134,13 @@ class CustomerServiceTest extends BaseTest
         self::assertInstanceOf(Customer::class, $customer);
         self::assertEquals('Email222222@bamboopayment.com', $customer->getEmail());
     }
+
+    public function testDeletePaymentProfile(): void
+    {
+        $bambooPaymentClient = $this->createBambooClientWithApiRequestMocked('customers', 'deletePaymentProfile');
+        $service             = new CustomerService($bambooPaymentClient);
+        $customer            = $service->deletePaymentProfile(53479, 55795);
+
+        self::assertInstanceOf(Customer::class, $customer);
+    }
 }
