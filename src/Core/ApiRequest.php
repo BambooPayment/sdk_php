@@ -54,8 +54,14 @@ class ApiRequest
      * @param string $apiBase
      * @param array $headers
      */
-    public function __construct(string $method, string $path, array $params, string $apiKey, string $apiBase, array $headers)
-    {
+    public function __construct(
+        string $method,
+        string $path,
+        array $params,
+        string $apiKey,
+        string $apiBase,
+        array $headers
+    ) {
         $this->method  = $method;
         $this->params  = $params;
         $this->headers = $headers;
