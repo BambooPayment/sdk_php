@@ -42,7 +42,7 @@ class ApiRequest
     /**
      * @var HttpClient|null
      */
-    private static ?HttpClient $_httpClient = null;
+    private static ?HttpClient $httpClient = null;
 
     /**
      * ApiRequest constructor.
@@ -129,7 +129,7 @@ class ApiRequest
 
         $this->handleErrorResponse($body, $code);
 
-        return $body[BambooPaymentClient::ARRAY_RESULT_KEY];
+        return $body[BambooPaymentClient::ARRAY_RESULT_KEY] ?? [];
     }
 
     /**
@@ -160,10 +160,10 @@ class ApiRequest
      */
     public function httpClient(): HttpClient
     {
-        if (! self::$_httpClient instanceof HttpClient) {
-            self::$_httpClient = HttpClient::instance();
+        if (! self::$httpClient instanceof HttpClient) {
+            self::$httpClient = HttpClient::instance();
         }
 
-        return self::$_httpClient;
+        return self::$httpClient;
     }
 }
