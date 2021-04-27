@@ -4,7 +4,6 @@ namespace BambooPayment\Core;
 
 use BambooPayment\Exception\ApiBadParametersException;
 use BambooPayment\Exception\ApiConnectionException;
-use BambooPayment\Exception\ApiErrorException;
 use BambooPayment\Exception\AuthenticationException;
 use BambooPayment\Exception\BadMethodCallException;
 use BambooPayment\Exception\InvalidRequestException;
@@ -12,12 +11,18 @@ use BambooPayment\Exception\UnknownApiErrorException;
 
 class ErrorHandler
 {
+
     /**
-     * @throws ApiBadParametersException
-     * @throws InvalidRequestException
-     * @throws ApiErrorException
-     * @throws AuthenticationException
-     * @throws UnknownApiErrorException
+     * Check if there is an error and throw the specific exception.
+     *
+     * @param array|null $body
+     * @param int $code
+     *
+     * @throws \BambooPayment\Exception\ApiBadParametersException
+     * @throws \BambooPayment\Exception\ApiConnectionException
+     * @throws \BambooPayment\Exception\AuthenticationException
+     * @throws \BambooPayment\Exception\InvalidRequestException
+     * @throws \BambooPayment\Exception\UnknownApiErrorException
      */
     public function handleErrorResponse(?array $body, int $code): void
     {
@@ -28,14 +33,17 @@ class ErrorHandler
     }
 
     /**
+     * Check the error code and throw the specific exception.
+     *
      * @param array $errorData
      * @param int $code
      * @param array $body
      *
-     * @throws ApiBadParametersException
-     * @throws AuthenticationException
-     * @throws InvalidRequestException
-     * @throws UnknownApiErrorException|\BambooPayment\Exception\ApiConnectionException
+     * @throws \BambooPayment\Exception\ApiBadParametersException
+     * @throws \BambooPayment\Exception\ApiConnectionException
+     * @throws \BambooPayment\Exception\AuthenticationException
+     * @throws \BambooPayment\Exception\InvalidRequestException
+     * @throws \BambooPayment\Exception\UnknownApiErrorException
      */
     private function throwSpecificException(array $errorData, int $code, array $body): void
     {

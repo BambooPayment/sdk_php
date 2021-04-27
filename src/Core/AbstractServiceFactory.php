@@ -6,16 +6,13 @@ use function array_key_exists;
 
 abstract class AbstractServiceFactory
 {
-
-    /**
-     * @var BambooPaymentClient
-     */
     private BambooPaymentClient $client;
 
     /**
      * @var array<string, AbstractService|AbstractServiceFactory>
      */
     private array $services;
+
     /**
      * @var AbstractService|AbstractServiceFactory|null
      */
@@ -31,6 +28,8 @@ abstract class AbstractServiceFactory
     }
 
     /**
+     * Return service FQN.
+     *
      * @param string $name
      *
      * @return null|string
@@ -38,6 +37,8 @@ abstract class AbstractServiceFactory
     abstract protected function getServiceClass(string $name): ?string;
 
     /**
+     * Get service from the array of services loaded or instantiate one.
+     *
      * @param string $name
      *
      * @return null|AbstractService|AbstractServiceFactory

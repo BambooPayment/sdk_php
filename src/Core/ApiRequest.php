@@ -15,45 +15,13 @@ use function is_array;
 
 class ApiRequest
 {
-    /**
-     * @var string
-     */
     private string $method;
-
-    /**
-     * @var string
-     */
     private string $absUrl;
-
-    /**
-     * @var array
-     */
     private array $params;
-    /**
-     * @var array
-     */
     private array $headers;
-
-    /**
-     * @var string
-     */
     private string $apiKey;
-
-    /**
-     * @var HttpClient|null
-     */
     private static ?HttpClient $httpClient = null;
 
-    /**
-     * ApiRequest constructor.
-     *
-     * @param string $method
-     * @param string $path
-     * @param array $params
-     * @param string $apiKey
-     * @param string $apiBase
-     * @param array $headers
-     */
     public function __construct(
         string $method,
         string $path,
@@ -69,6 +37,11 @@ class ApiRequest
         $this->absUrl  = $apiBase . $path;
     }
 
+    /**
+     * Make a request.
+     *
+     * @return \BambooPayment\Core\ApiResponse
+     */
     public function request(): ApiResponse
     {
         $response = $this->makeRequest($this->method, $this->absUrl, $this->params, $this->headers);
@@ -76,8 +49,8 @@ class ApiRequest
         return new ApiResponse($response->getBody(), $response->getStatusCode(), $response->getHeaders());
     }
 
-    /**f
-     * @static
+    /**
+     * Get default headers.
      *
      * @param string $apiKey
      *
@@ -92,6 +65,8 @@ class ApiRequest
     }
 
     /**
+     * Make a request to the API.
+     *
      * @param string $method
      * @param string $absUrl
      * @param array $params
@@ -113,6 +88,8 @@ class ApiRequest
     }
 
     /**
+     * Return the data from the API response or throw an error.
+     *
      * @param ApiResponse $apiResponse
      *
      * @return array
@@ -133,6 +110,8 @@ class ApiRequest
     }
 
     /**
+     * Check for a error in the API response and throw a Exception if it is needed.
+     *
      * @param array|null $body
      * @param int $code
      *
@@ -155,9 +134,6 @@ class ApiRequest
         }
     }
 
-    /**
-     * @return HttpClient
-     */
     public function httpClient(): HttpClient
     {
         if (! self::$httpClient instanceof HttpClient) {
