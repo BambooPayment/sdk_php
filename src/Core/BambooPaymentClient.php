@@ -19,11 +19,15 @@ class BambooPaymentClient
     private ?CoreServiceFactory $coreServiceFactory = null;
     private array $config;
 
-    /**
-     * @var AbstractService|AbstractServiceFactory|null
-     */
+    /** * @var AbstractService|AbstractServiceFactory|null */
     private $data;
 
+    /**
+     * BambooPaymentClient constructor.
+     * testing: if it is true, the api_base is the testing url.
+     *
+     * @param array $config
+     */
     public function __construct(array $config)
     {
         if (! isset($config['api_key'])) {
@@ -62,6 +66,8 @@ class BambooPaymentClient
     }
 
     /**
+     * Send a request to the API and return an array of data.
+     *
      * @throws \BambooPayment\Exception\InvalidRequestException
      * @throws \BambooPayment\Exception\AuthenticationException
      * @throws \BambooPayment\Exception\ApiErrorException
@@ -74,6 +80,11 @@ class BambooPaymentClient
         return $apiRequest->interpretResponse($apiResponse);
     }
 
+    /**
+     * Check that the api_key is present.
+     *
+     * @param array $config
+     */
     private function validateConfig(array $config): void
     {
         $msg = null;
@@ -90,7 +101,14 @@ class BambooPaymentClient
         }
     }
 
-    public function __get($name)
+    /**
+     * Return a service from the array of services.
+     *
+     * @param string $name
+     *
+     * @return \BambooPayment\Core\AbstractService|\BambooPayment\Core\AbstractServiceFactory|null
+     */
+    public function __get(string $name)
     {
         if (! $this->coreServiceFactory instanceof CoreServiceFactory) {
             $this->coreServiceFactory = new CoreServiceFactory($this);
@@ -116,6 +134,8 @@ class BambooPaymentClient
     }
 
     /**
+     * Create an ApiRequest to make request to the API.
+     *
      * @param string $method
      * @param string $path
      * @param array|null $params

@@ -49,4 +49,19 @@ class PurchaseServiceTest extends BaseTest
 
         self::assertCount(5, $service->all());
     }
+
+    public function testGetAllPurchasesFilterByDate(): void
+    {
+        $bambooPaymentClient = $this->createBambooClientWithApiRequestMocked('purchases', 'allFiltered');
+        $service             = new PurchaseService($bambooPaymentClient);
+
+        self::assertCount(
+            2,
+            $service->all(
+                [
+                    'From' => '20210401'
+                ]
+            )
+        );
+    }
 }
