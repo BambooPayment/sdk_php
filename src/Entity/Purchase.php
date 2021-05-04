@@ -95,6 +95,16 @@ class Purchase extends BambooPaymentObject
         $customer         = new Customer();
         $data['Customer'] = $customer->hydrate($data['Customer']);
 
+        $transaction         = new Transaction();
+        $data['Transaction'] = $transaction->hydrate($data['Transaction']);
+//
+//        // after rollback set transactionStatusId?
+//        $rolbcaksHydrated = [];
+//        $refunds = $data['RedundList'] ?? [];
+//        foreach ($refunds as $refund) {
+//
+//        }
+
 //        $rollbacksHydrated = [];
 //        $rollbacks = $data['RefundList'] ?? [];
 //        if (\count($rollbacks) > 0) {
