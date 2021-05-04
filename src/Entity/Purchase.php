@@ -18,7 +18,7 @@ class Purchase extends BambooPaymentObject
     /** @var string */
     private $Order;
 
-    /** @var array */
+    /** @var Transaction */
     private $Transaction;
 
     /** @var bool */
@@ -45,7 +45,7 @@ class Purchase extends BambooPaymentObject
     /** @var string|null */
     private $Description;
 
-    /** @var \BambooPayment\Entity\Customer */
+    /** @var Customer */
     private $Customer;
 
     /** @var array */
@@ -160,9 +160,9 @@ class Purchase extends BambooPaymentObject
     }
 
     /**
-     * @return array
+     * @return Transaction
      */
-    public function getTransaction(): array
+    public function getTransaction(): Transaction
     {
         return $this->Transaction;
     }
@@ -232,7 +232,7 @@ class Purchase extends BambooPaymentObject
     }
 
     /**
-     * @return \BambooPayment\Entity\Customer
+     * @return Customer
      */
     public function getCustomer(): Customer
     {
@@ -240,7 +240,7 @@ class Purchase extends BambooPaymentObject
     }
 
     /**
-     * @return array<\BambooPayment\Entity\Refund>
+     * @return Refund[]
      */
     public function getRefundList(): array
     {

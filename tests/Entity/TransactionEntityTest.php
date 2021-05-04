@@ -3,13 +3,13 @@
 namespace BambooPaymentTests\Entity;
 
 use BambooPayment\Entity\Transaction;
-use BambooPaymentTests\SharedDataTest;
+use BambooPaymentTests\SharedData;
 
 /**
  * Class TransactionEntityTest
  * @package BambooPaymentTests\Entity
  */
-class TransactionEntityTest extends SharedDataTest
+class TransactionEntityTest extends SharedData
 {
     private const TRANSACTION_ID        = 'TransactionId';
     private const CREATED               = 'Created';
