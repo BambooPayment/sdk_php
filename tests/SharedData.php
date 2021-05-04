@@ -9,7 +9,7 @@ use BambooPaymentTests\Entity\TransactionStepEntityTest;
  * Class SharedDataTest
  * @package BambooPaymentTests
  */
-class SharedDataTest extends BaseTest
+class SharedData extends BaseTest
 {
     protected function getDataOfTransactionStep(): array
     {
