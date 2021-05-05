@@ -2,10 +2,10 @@
 
 namespace BambooPaymentTests\Entity;
 
-use BambooPayment\Entity\DataUy;
+use BambooPayment\Entity\CountryDataUY;
 use BambooPaymentTests\BaseTest;
 
-class DataUyEntityTest extends BaseTest
+class CountryDataUyEntityTest extends BaseTest
 {
     private const IS_FINAL_CONSUMER = 'IsFinalConsumer';
     private const INVOICE           = 'Invoice';
@@ -13,12 +13,12 @@ class DataUyEntityTest extends BaseTest
 
     public function testHydrate(): void
     {
-        $dataUy = new DataUy();
+        $dataUy = new CountryDataUY();
         $data   = $this->getDataOfDataUy();
 
         $dataUy = $dataUy->hydrate($data);
 
-        self::assertInstanceOf(DataUy::class, $dataUy);
+        self::assertInstanceOf(CountryDataUY::class, $dataUy);
         self::assertEquals($data[self::IS_FINAL_CONSUMER], $dataUy->getIsFinalConsumer());
         self::assertEquals($data[self::INVOICE], $dataUy->getInvoice());
         self::assertEquals($data[self::TAXABLE_AMOUNT], $dataUy->getTaxableAmount());
@@ -28,8 +28,8 @@ class DataUyEntityTest extends BaseTest
     {
         return [
             self::IS_FINAL_CONSUMER => true,
-            self::INVOICE           => 1234,
-            self::TAXABLE_AMOUNT    => '1234'
+            self::INVOICE           => 1000,
+            self::TAXABLE_AMOUNT    => '0'
         ];
     }
 }

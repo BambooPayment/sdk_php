@@ -25,7 +25,7 @@ class TransactionStep extends BambooPaymentObject
     /** @var string */
     private $ResponseMessage;
 
-    /** @var string */
+    /** @var string|null */
     private $Error;
 
     /** @var string */
@@ -43,27 +43,11 @@ class TransactionStep extends BambooPaymentObject
     }
 
     /**
-     * @param string $Step
-     */
-    public function setStep(string $Step): void
-    {
-        $this->Step = $Step;
-    }
-
-    /**
      * @return string
      */
     public function getCreated(): string
     {
         return $this->Created;
-    }
-
-    /**
-     * @param string $Created
-     */
-    public function setCreated(string $Created): void
-    {
-        $this->Created = $Created;
     }
 
     /**
@@ -75,27 +59,11 @@ class TransactionStep extends BambooPaymentObject
     }
 
     /**
-     * @param string $Status
-     */
-    public function setStatus(string $Status): void
-    {
-        $this->Status = $Status;
-    }
-
-    /**
      * @return string
      */
     public function getResponseCode(): string
     {
         return $this->ResponseCode;
-    }
-
-    /**
-     * @param string $ResponseCode
-     */
-    public function setResponseCode(string $ResponseCode): void
-    {
-        $this->ResponseCode = $ResponseCode;
     }
 
     /**
@@ -107,27 +75,11 @@ class TransactionStep extends BambooPaymentObject
     }
 
     /**
-     * @param string $ResponseMessage
+     * @return string|null
      */
-    public function setResponseMessage(string $ResponseMessage): void
-    {
-        $this->ResponseMessage = $ResponseMessage;
-    }
-
-    /**
-     * @return string
-     */
-    public function getError(): string
+    public function getError(): ?string
     {
         return $this->Error;
-    }
-
-    /**
-     * @param string $Error
-     */
-    public function setError(string $Error): void
-    {
-        $this->Error = $Error;
     }
 
     /**
@@ -139,26 +91,10 @@ class TransactionStep extends BambooPaymentObject
     }
 
     /**
-     * @param string $AuthorizationCode
-     */
-    public function setAuthorizationCode(string $AuthorizationCode): void
-    {
-        $this->AuthorizationCode = $AuthorizationCode;
-    }
-
-    /**
      * @return string|null
      */
     public function getUniqueId(): ?string
     {
         return $this->UniqueId;
-    }
-
-    /**
-     * @param string|null $UniqueId
-     */
-    public function setUniqueId(?string $UniqueId): void
-    {
-        $this->UniqueId = $UniqueId;
     }
 }

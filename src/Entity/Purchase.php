@@ -33,7 +33,7 @@ class Purchase extends BambooPaymentObject
     /** @var float */
     private $TaxableAmount;
 
-    /** @var float */
+    /** @var float|null */
     private $Tip;
 
     /** @var int */
@@ -57,7 +57,7 @@ class Purchase extends BambooPaymentObject
     /** @var string|null */
     private $UniqueID;
 
-    /** @var array */
+    /** @var array|null */
     private $AdditionalData;
 
     /** @var string|null */
@@ -69,10 +69,10 @@ class Purchase extends BambooPaymentObject
     /** @var string */
     private $URL;
 
-    /** @var array */
+    /** @var CountryDataUY|null */
     private $DataUY;
 
-    /** @var array|null */
+    /** @var CountryDataDO|null */
     private $DataDO;
 
     /** @var array */
@@ -98,11 +98,21 @@ class Purchase extends BambooPaymentObject
         $transaction         = new Transaction();
         $data['Transaction'] = $transaction->hydrate($data['Transaction']);
 
+        if (null !== $data['DataUY']) {
+            $dataUy         = new CountryDataUY();
+            $data['DataUY'] = $dataUy->hydrate($data['DataUY']);
+        }
+
+        if (null !== $data['DataDO']) {
+            $dataDo         = new CountryDataDO();
+            $data['DataDO'] = $dataDo->hydrate($data['DataDO']);
+        }
+
         $refundHydrated = [];
         $refunds        = $data['RefundList'] ?? [];
         if (\count($refunds) > 0) {
             foreach ($refunds as $refundData) {
-                $refund           = new Refund();
+                $refund           = new RefundData();
                 $refundHydrated[] = $refund->hydrate($refundData);
             }
             $data['RefundList'] = $refundHydrated;
@@ -184,9 +194,9 @@ class Purchase extends BambooPaymentObject
     }
 
     /**
-     * @return float
+     * @return float|null
      */
-    public function getTip(): float
+    public function getTip(): ?float
     {
         return $this->Tip;
     }
@@ -224,7 +234,7 @@ class Purchase extends BambooPaymentObject
     }
 
     /**
-     * @return Refund[]
+     * @return RefundData[]
      */
     public function getRefundList(): array
     {
@@ -248,9 +258,9 @@ class Purchase extends BambooPaymentObject
     }
 
     /**
-     * @return array
+     * @return array|null
      */
-    public function getAdditionalData(): array
+    public function getAdditionalData(): ?array
     {
         return $this->AdditionalData ?? [];
     }
@@ -280,17 +290,17 @@ class Purchase extends BambooPaymentObject
     }
 
     /**
-     * @return array
+     * @return CountryDataUY|null
      */
-    public function getDataUY(): array
+    public function getDataUY(): ?CountryDataUY
     {
         return $this->DataUY;
     }
 
     /**
-     * @return array|null
+     * @return CountryDataDO|null
      */
-    public function getDataDO(): ?array
+    public function getDataDO(): ?CountryDataDO
     {
         return $this->DataDO;
     }

@@ -2,16 +2,16 @@
 
 namespace BambooPaymentTests\Entity;
 
-use BambooPayment\Entity\Refund;
+use BambooPayment\Entity\RefundData;
 use BambooPaymentTests\BaseTest;
 
 class RefundEntityTest extends BaseTest
 {
     public function testHydrate(): void
     {
-        $refund = new Refund();
+        $refund = new RefundData();
 
-        /** @var Refund $refund */
+        /** @var RefundData $refund */
         $refund = $refund->hydrate(
             [
                 'PurchaseRefundId' => 90536,
