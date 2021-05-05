@@ -18,7 +18,7 @@ class CountryDataUyEntityTest extends BaseTest
 
         $dataUy = $dataUy->hydrate($data);
 
-        self::assertInstanceOf(DataUy::class, $dataUy);
+        self::assertInstanceOf(CountryDataUy::class, $dataUy);
         self::assertEquals($data[self::IS_FINAL_CONSUMER], $dataUy->getIsFinalConsumer());
         self::assertEquals($data[self::INVOICE], $dataUy->getInvoice());
         self::assertEquals($data[self::TAXABLE_AMOUNT], $dataUy->getTaxableAmount());
@@ -28,8 +28,8 @@ class CountryDataUyEntityTest extends BaseTest
     {
         return [
             self::IS_FINAL_CONSUMER => true,
-            self::INVOICE           => 1234,
-            self::TAXABLE_AMOUNT    => '1234'
+            self::INVOICE           => 1000,
+            self::TAXABLE_AMOUNT    => '0'
         ];
     }
 }
