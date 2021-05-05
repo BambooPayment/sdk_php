@@ -5,8 +5,7 @@
 namespace BambooPayment\Entity;
 
 /**
- * Class RefundData
- * @package BambooPayment\Entity
+ * Class RefundData.
  */
 class RefundData extends BambooPaymentObject
 {
