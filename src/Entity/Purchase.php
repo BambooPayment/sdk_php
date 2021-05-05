@@ -98,6 +98,16 @@ class Purchase extends BambooPaymentObject
         $transaction         = new Transaction();
         $data['Transaction'] = $transaction->hydrate($data['Transaction']);
 
+        if (null !== $data['DataUY']) {
+            $dataUy         = new CountryDataUy();
+            $data['DataUY'] = $dataUy->hydrate($data['DataUY']);
+        }
+
+        if (null !== $data['DataDO']) {
+            $dataDo         = new CountryDataDo();
+            $data['DataDO'] = $dataDo->hydrate($data['DataDO']);
+        }
+
         $refundHydrated = [];
         $refunds        = $data['RefundList'] ?? [];
         if (\count($refunds) > 0) {
