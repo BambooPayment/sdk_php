@@ -5,7 +5,7 @@ namespace BambooPaymentTests\Entity;
 use BambooPayment\Entity\CountryDataUy;
 use BambooPaymentTests\BaseTest;
 
-class DataUyEntityTest extends BaseTest
+class CountryDataUyEntityTest extends BaseTest
 {
     private const IS_FINAL_CONSUMER = 'IsFinalConsumer';
     private const INVOICE           = 'Invoice';
