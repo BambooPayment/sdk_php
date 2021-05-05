@@ -72,7 +72,7 @@ class Purchase extends BambooPaymentObject
     /** @var CountryDataUy|null */
     private $DataUY;
 
-    /** @var $CountryDataDo|null */
+    /** @var CountryDataDo|null */
     private $DataDO;
 
     /** @var array */
@@ -298,15 +298,15 @@ class Purchase extends BambooPaymentObject
     /**
      * @return CountryDataUy|null
      */
-    public function getDataUY(): array
+    public function getDataUY(): ?CountryDataUy
     {
         return $this->DataUY;
     }
 
     /**
-     * @return string|null
+     * @return CountryDataDo|null
      */
-    public function getDataDO(): ?string
+    public function getDataDO(): ?CountryDataDo
     {
         return $this->DataDO;
     }
