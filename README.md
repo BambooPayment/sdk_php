@@ -7,19 +7,134 @@
 [![Coverage Status][ico-coveralls]][link-coveralls]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-``` bash
-$bambooPaymentClient = new BambooPaymentClient([
-    'api_key' => $privateKey,
-    'testing' => true,
-]);
+## System Requirements
+You need PHP >= 7.4
 
-$customer = $bambooPaymentClient->customers->fetch(customerId);
+
+## Documentation
+
+Full documentation: [Spanish][doc-es], [English][doc-en], [Portuguese][doc-pt].
+
+## Installation
+
+#### Composer
+To install with Composer, simply add the requirement to your composer.json file:
+
+```php
+{
+  "require" : {
+    "bamboopayment/bamboopayment-sdk" : "0.1.*"
+  }
+}
+```
+Then install by running
+
+```php
+composer.phar install
+```
+
+#### Manual installation
+Obtain the latest version of openpayu_php SDK with:
+```php
+git clone https://github.com/BambooPayment/sdk_php.git
+```
+
+## Getting started
+
+If you are using Composer use autoload functionality:
+
+```php
+include "vendor/autoload.php";
+```
+
+## Usage
+
+#### Creating a customer
+
+   File with working example: [examples/customers/create.php](examples/customers/create.php)
+
+   To create an order using REST API in back-end you must provide an Array with customer data:
+
+   in your controller
+```php
+    $bambooPaymentClient = new BambooPaymentClient([
+        'api_key' => $privateKey,
+        'testing' => true,
+    ]);
+
+    $customer = $bambooPaymentClient->customers->create(
+        [
+            'Email'          => 'testing@bamboopayment.com',
+            'FirstName'      => 'PrimerNombre',
+            'LastName'       => 'PrimerApellido',
+            'DocNumber'      => 12345672,
+            'DocumentTypeId' => 2,
+            'PhoneNumber'    => '24022330',
+            'BillingAddress' => [
+                'AddressType'   => 1,
+                'Country'       => 'UY',
+                'State'         => 'Montevideo',
+                'City'          => 'MONTEVIDEO',
+                'AddressDetail' => '10000'
+            ]
+        ]
+    );
+
+    $response = OpenPayU_Order::create($order);
+
+    header('Location:'.$response->getResponse()->redirectUri); //You must redirect your client to PayU payment summary page.
+```
+
+#### Creating a purchase
+
+   File with working example: [examples/purchases/create.php](examples/purchases/create.php)
+
+   To create an order using REST API in back-end you must provide an Array with purchase data:
+
+   in your controller
+```php
+    $bambooPaymentClient = new BambooPaymentClient([
+        'api_key' => $privateKey,
+        'testing' => true,
+    ]);
+
+    $purchase = $bambooPaymentClient->purchases->create(
+        [
+            'TrxToken'     => 'OT__klLNXDDkgAvk1KXG-i6SIUxo-ACnvpjf4jiYpVJ8SzQ_',
+            'Order'        => '12345678',
+            'Amount'       => 100,
+            'Installments' => 1,
+            'Customer'     => [
+                'Email'          => 'juanperez123@bamboopayment.com',
+                'FirstName'      => 'Juan',
+                'LastName'       => 'Perez',
+                'PhoneNumber'    => '099123123',
+                'DocNumber'      => '12345672',
+                'DocumentTypeId' => 2,
+                'BillingAddress' => [
+                    'AddressType'   => 1,
+                    'Country'       => 'Uruguay',
+                    'State'         => 'Montevideo',
+                    'City'          => 'MONTEVIDEO',
+                    'AddressDetail' => 'Av. Sarmiento 2260'
+                ]
+            ],
+            'DataUY'       => [
+                'IsFinalConsumer' => 'true',
+                'Invoice'         => '1000',
+                'TaxableAmount'   => 100
+            ],
+            'Currency'     => 'UYU',
+            'Capture'      => 'true'
+        ]
+    );
 ```
 
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
+<!--external links:-->
 [ico-version]: https://img.shields.io/packagist/v/bamboopayment/bamboopayment-sdk.svg?style=flat-square
 
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
@@ -41,3 +156,10 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [link-author]: https://github.com/BambooPayment/sdk_php
 
 [link-contributors]: ../../contributors
+
+[doc-es]: https://dev.bamboopayment.com/docs/es-api-bamboo-payment-pci/
+
+[doc-en]: https://dev.bamboopayment.com/docs/en-api-bamboo-payment-pci/
+
+[doc-pt]: https://dev.bamboopayment.com/docs/pt-api-bamboo-payment-pci/
+

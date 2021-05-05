@@ -10,7 +10,7 @@ namespace BambooPayment\Entity;
  */
 class CardData extends BambooPaymentObject
 {
-    /** @var bool */
+    /** @var string */
     private $CardholderName;
 
     /** @var string */
@@ -29,9 +29,9 @@ class CardData extends BambooPaymentObject
     private $Document;
 
     /**
-     * @return bool
+     * @return string
      */
-    public function isCardholderName(): bool
+    public function getCardholderName(): string
     {
         return $this->CardholderName;
     }
