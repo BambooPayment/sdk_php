@@ -4,7 +4,11 @@
 
 namespace BambooPayment\Entity;
 
-class Refund extends BambooPaymentObject
+/**
+ * Class RefundData
+ * @package BambooPayment\Entity
+ */
+class RefundData extends BambooPaymentObject
 {
     /**  @var int|null */
     private $PurchaseRefundId;

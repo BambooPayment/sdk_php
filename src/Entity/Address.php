@@ -12,16 +12,22 @@ class Address extends BambooPaymentObject
 {
     /** @var int */
     private $AddressId;
+
     /** @var int|null */
     private $AddressType;
+
     /** @var string|null */
     private $Country;
+
     /** @var string|null */
     private $State;
+
     /** @var string */
     private $AddressDetail;
+
     /** @var string|null */
     private $PostalCode;
+
     /** @var string|null */
     private $City;
 

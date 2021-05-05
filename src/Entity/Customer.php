@@ -15,7 +15,7 @@ class Customer extends BambooPaymentObject
     /** @var string |null */
     private $CommerceCustomerId;
 
-    /** @var string|null */
+    /** @var string */
     private $Owner;
 
     /** @var string */
@@ -24,10 +24,10 @@ class Customer extends BambooPaymentObject
     /** @var bool|null */
     private $Enabled;
 
-    /** @var \BambooPayment\Entity\Address|null */
+    /** @var Address|null */
     private $ShippingAddress;
 
-    /** @var \BambooPayment\Entity\Address|null */
+    /** @var Address|null */
     private $BillingAddress;
 
     /** @var array|null */
@@ -111,9 +111,9 @@ class Customer extends BambooPaymentObject
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getOwner(): ?string
+    public function getOwner(): string
     {
         return $this->Owner;
     }

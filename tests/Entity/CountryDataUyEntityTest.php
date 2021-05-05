@@ -2,7 +2,7 @@
 
 namespace BambooPaymentTests\Entity;
 
-use BambooPayment\Entity\DataUy;
+use BambooPayment\Entity\CountryDataUy;
 use BambooPaymentTests\BaseTest;
 
 class DataUyEntityTest extends BaseTest
@@ -13,7 +13,7 @@ class DataUyEntityTest extends BaseTest
 
     public function testHydrate(): void
     {
-        $dataUy = new DataUy();
+        $dataUy = new CountryDataUy();
         $data   = $this->getDataOfDataUy();
 
         $dataUy = $dataUy->hydrate($data);
