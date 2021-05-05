@@ -34,7 +34,7 @@ composer.phar install
 ```
 
 #### Manual installation
-Obtain the latest version of openpayu_php SDK with:
+Obtain the latest version of BambooPayment SDK with:
 ```php
 git clone https://github.com/BambooPayment/sdk_php.git
 ```
@@ -79,10 +79,6 @@ include "vendor/autoload.php";
             ]
         ]
     );
-
-    $response = OpenPayU_Order::create($order);
-
-    header('Location:'.$response->getResponse()->redirectUri); //You must redirect your client to PayU payment summary page.
 ```
 
 #### Creating a purchase
