@@ -12,36 +12,52 @@ class PaymentProfile extends BambooPaymentObject
 {
     /** @var int */
     private $PaymentProfileId;
+
     /** @var int */
     private $PaymentMediaId;
+
     /** @var string */
     private $Created;
+
     /** @var string|null */
     private $LastUpdate;
+
     /** @var string */
     private $Brand;
-    /** @var string */
+
+    /** @var string|null */
     private $CardOwner;
+
     /** @var null|string */
     private $Bin;
+
     /** @var string */
     private $IssuerBank;
+
     /** @var string */
     private $Installments;
+
     /** @var string */
     private $Type;
+
     /** @var int */
     private $IdCommerceToken;
+
     /** @var string|null */
     private $Token;
-    /** @var string */
+
+    /** @var string|null */
     private $Expiration;
+
     /** @var string */
     private $Last4;
-    /** @var bool */
+
+    /** @var bool|null */
     private $Enabled;
+
     /** @var string|null */
     private $DocumentNumber;
+
     /** @var string|null */
     private $DocumentTypeId;
 
@@ -86,9 +102,9 @@ class PaymentProfile extends BambooPaymentObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getCardOwner(): string
+    public function getCardOwner(): ?string
     {
         return $this->CardOwner;
     }
@@ -142,9 +158,9 @@ class PaymentProfile extends BambooPaymentObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getExpiration(): string
+    public function getExpiration(): ?string
     {
         return $this->Expiration;
     }
@@ -158,9 +174,9 @@ class PaymentProfile extends BambooPaymentObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function isEnabled(): bool
+    public function isEnabled(): ?bool
     {
         return $this->Enabled;
     }

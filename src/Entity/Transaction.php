@@ -35,10 +35,10 @@ class Transaction extends BambooPaymentObject
 
     public function hydrate(array $data): self
     {
-        $steps            = $data[self::STEPS] ?? [];
-        $transactionSteps = [];
+        $steps             = $data[self::STEPS] ?? [];
+        $data[self::STEPS] = [];
         foreach ($steps as $step) {
-            $transactionStep       = new TransactionStep();
+            $transactionStep     = new TransactionStep();
             $data[self::STEPS][] = $transactionStep->hydrate($step);
         }
 
@@ -54,27 +54,11 @@ class Transaction extends BambooPaymentObject
     }
 
     /**
-     * @param int $TransactionId
-     */
-    public function setTransactionId(int $TransactionId): void
-    {
-        $this->TransactionId = $TransactionId;
-    }
-
-    /**
      * @return string
      */
     public function getCreated(): string
     {
         return $this->Created;
-    }
-
-    /**
-     * @param string $Created
-     */
-    public function setCreated(string $Created): void
-    {
-        $this->Created = $Created;
     }
 
     /**
@@ -86,14 +70,6 @@ class Transaction extends BambooPaymentObject
     }
 
     /**
-     * @param int $TransactionStatusId
-     */
-    public function setTransactionStatusId(int $TransactionStatusId): void
-    {
-        $this->TransactionStatusId = $TransactionStatusId;
-    }
-
-    /**
      * @return string
      */
     public function getStatus(): string
@@ -102,27 +78,11 @@ class Transaction extends BambooPaymentObject
     }
 
     /**
-     * @param string $Status
-     */
-    public function setStatus(string $Status): void
-    {
-        $this->Status = $Status;
-    }
-
-    /**
-     * @return string
+     * @return string|null
      */
     public function getDescription(): ?string
     {
         return $this->Description;
-    }
-
-    /**
-     * @param string|null $Description
-     */
-    public function setDescription(?string $Description): void
-    {
-        $this->Description = $Description;
     }
 
     /**
@@ -134,26 +94,10 @@ class Transaction extends BambooPaymentObject
     }
 
     /**
-     * @param string|null $ApprovalCode
-     */
-    public function setApprovalCode(?string $ApprovalCode): void
-    {
-        $this->ApprovalCode = $ApprovalCode;
-    }
-
-    /**
      * @return TransactionStep[]
      */
     public function getSteps(): array
     {
         return $this->Steps;
-    }
-
-    /**
-     * @param TransactionStep[] $Steps
-     */
-    public function setSteps(array $Steps): void
-    {
-        $this->Steps = $Steps;
     }
 }

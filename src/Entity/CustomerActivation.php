@@ -25,26 +25,10 @@ class CustomerActivation extends BambooPaymentObject
     }
 
     /**
-     * @param string $Token
-     */
-    public function setToken(string $Token): void
-    {
-        $this->Token = $Token;
-    }
-
-    /**
      * @return string
      */
     public function getActivationCode(): string
     {
         return $this->ActivationCode;
-    }
-
-    /**
-     * @param string $ActivationCode
-     */
-    public function setActivationCode(string $ActivationCode): void
-    {
-        $this->ActivationCode = $ActivationCode;
     }
 }

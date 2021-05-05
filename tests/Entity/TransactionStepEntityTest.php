@@ -26,6 +26,7 @@ class TransactionStepEntityTest extends SharedData
         $data            = $this->getDataOfTransactionStep();
         $transactionStep = $transactionStep->hydrate($data);
 
+        self::assertInstanceOf(TransactionStep::class, $transactionStep);
         self::assertEquals($data[self::STEP], $transactionStep->getStep());
         self::assertEquals($data[self::CREATED], $transactionStep->getCreated());
         self::assertEquals($data[self::STATUS], $transactionStep->getStatus());
