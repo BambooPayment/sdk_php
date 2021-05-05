@@ -17,6 +17,7 @@ class CustomerActivationEntityTest extends BaseTest
 
         $customerActivation = $customerActivation->hydrate($data);
 
+        self::assertInstanceOf(CustomerActivation::class, $customerActivation);
         self::assertEquals($data[self::TOKEN], $customerActivation->getToken());
         self::assertEquals($data[self::ACTIVATION_CODE], $customerActivation->getActivationCode());
     }
@@ -24,8 +25,8 @@ class CustomerActivationEntityTest extends BaseTest
     private function getDataOfCustomerActivation(): array
     {
         return [
-                self::TOKEN           => 'OT__wrRvTzyIBv8Do3X_PsfuQzJrhdvga1Wy4jiYpVJ8SzQ_',
-                self::ACTIVATION_CODE => '1234'
-            ];
+            self::TOKEN           => 'OT__wrRvTzyIBv8Do3X_PsfuQzJrhdvga1Wy4jiYpVJ8SzQ_',
+            self::ACTIVATION_CODE => '1234'
+        ];
     }
 }
