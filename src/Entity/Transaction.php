@@ -35,11 +35,11 @@ class Transaction extends BambooPaymentObject
 
     public function hydrate(array $data): self
     {
-        $steps            = $data[self::STEPS] ?? [];
-        $transactionSteps = [];
+        $steps             = $data[self::STEPS] ?? [];
+        $data[self::STEPS] = [];
         foreach ($steps as $step) {
-            $transactionStep       = new TransactionStep();
-            $data[self::STEPS][]   = $transactionStep->hydrate($step);
+            $transactionStep     = new TransactionStep();
+            $data[self::STEPS][] = $transactionStep->hydrate($step);
         }
 
         return parent::hydrate($data);
