@@ -10,6 +10,16 @@
 ## System Requirements
 You need PHP >= 7.4
 
+## Dependencies
+
+The bindings require the following extensions in order to work properly:
+
+-   [`json`](https://secure.php.net/manual/en/book.json.php)
+-   [`guzzle`](https://docs.guzzlephp.org/) (Guzzle is a PHP HTTP client to send HTTP requests and to integrate with web services.)
+-   [`generated-hydrator"`](https://secure.php.net/manual/en/book.curl.php) (GeneratedHydrator is a library about high performance transition of data from arrays to objects and from objects to arrays.)
+
+
+If you use Composer, these dependencies should be handled automatically. If you install manually, you'll want to make sure that these extensions are available.
 
 ## Documentation
 
@@ -32,6 +42,12 @@ Then install by running
 ```php
 composer.phar install
 ```
+
+You can also install the package run the following command:
+```php
+composer require bamboopayment/bamboopayment-sdk
+```
+
 
 #### Manual installation
 Obtain the latest version of BambooPayment SDK with:
@@ -58,7 +74,7 @@ include "vendor/autoload.php";
    in your controller
 ```php
     $bambooPaymentClient = new BambooPaymentClient([
-        'api_key' => $privateKey,
+        'api_key' => PRIVATE_KEY,
         'testing' => true,
     ]);
 
@@ -90,7 +106,7 @@ include "vendor/autoload.php";
    in your controller
 ```php
     $bambooPaymentClient = new BambooPaymentClient([
-        'api_key' => $privateKey,
+        'api_key' => PRIVATE_KEY,
         'testing' => true,
     ]);
 
@@ -125,6 +141,15 @@ include "vendor/autoload.php";
         ]
     );
 ```
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Run composer test to test your code (`composer test`)
+6. Create new Pull Request
 
 ## License
 
