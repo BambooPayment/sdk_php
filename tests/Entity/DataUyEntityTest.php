@@ -18,6 +18,7 @@ class DataUyEntityTest extends BaseTest
 
         $dataUy = $dataUy->hydrate($data);
 
+        self::assertInstanceOf(DataUy::class, $dataUy);
         self::assertEquals($data[self::IS_FINAL_CONSUMER], $dataUy->getIsFinalConsumer());
         self::assertEquals($data[self::INVOICE], $dataUy->getInvoice());
         self::assertEquals($data[self::TAXABLE_AMOUNT], $dataUy->getTaxableAmount());

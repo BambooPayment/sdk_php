@@ -16,9 +16,7 @@ class TransactionStep extends BambooPaymentObject
     /** @var string */
     private $Created;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $Status;
 
     /** @var string */

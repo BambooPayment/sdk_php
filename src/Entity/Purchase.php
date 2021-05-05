@@ -72,7 +72,7 @@ class Purchase extends BambooPaymentObject
     /** @var array */
     private $DataUY;
 
-    /** @var string|null */
+    /** @var array|null */
     private $DataDO;
 
     /** @var array */
@@ -97,22 +97,6 @@ class Purchase extends BambooPaymentObject
 
         $transaction         = new Transaction();
         $data['Transaction'] = $transaction->hydrate($data['Transaction']);
-//
-//        // after rollback set transactionStatusId?
-//        $rolbcaksHydrated = [];
-//        $refunds = $data['RedundList'] ?? [];
-//        foreach ($refunds as $refund) {
-//
-//        }
-
-//        $rollbacksHydrated = [];
-//        $rollbacks = $data['RefundList'] ?? [];
-//        if (\count($rollbacks) > 0) {
-//            foreach ($rollbacks as $rollbackData) {
-//                $rollback =  new Rol
-//                $rollbacksHydrated[] =
-//            }
-//        }
 
         $refundHydrated = [];
         $refunds        = $data['RefundList'] ?? [];
@@ -304,9 +288,9 @@ class Purchase extends BambooPaymentObject
     }
 
     /**
-     * @return string|null
+     * @return array|null
      */
-    public function getDataDO(): ?string
+    public function getDataDO(): ?array
     {
         return $this->DataDO;
     }
