@@ -8,7 +8,7 @@ namespace BambooPayment\Entity;
  * Class CountryDataUy
  * Object to store country data to Uruguay.
  */
-class CountryDataUy extends BambooPaymentObject
+class CountryDataUY extends BambooPaymentObject
 {
     /** @var bool|null */
     private $IsFinalConsumer;

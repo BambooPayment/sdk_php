@@ -69,10 +69,10 @@ class Purchase extends BambooPaymentObject
     /** @var string */
     private $URL;
 
-    /** @var CountryDataUy|null */
+    /** @var CountryDataUY|null */
     private $DataUY;
 
-    /** @var CountryDataDo|null */
+    /** @var CountryDataDO|null */
     private $DataDO;
 
     /** @var array */
@@ -99,12 +99,12 @@ class Purchase extends BambooPaymentObject
         $data['Transaction'] = $transaction->hydrate($data['Transaction']);
 
         if (null !== $data['DataUY']) {
-            $dataUy         = new CountryDataUy();
+            $dataUy         = new CountryDataUY();
             $data['DataUY'] = $dataUy->hydrate($data['DataUY']);
         }
 
         if (null !== $data['DataDO']) {
-            $dataDo         = new CountryDataDo();
+            $dataDo         = new CountryDataDO();
             $data['DataDO'] = $dataDo->hydrate($data['DataDO']);
         }
 
@@ -290,17 +290,17 @@ class Purchase extends BambooPaymentObject
     }
 
     /**
-     * @return CountryDataUy|null
+     * @return CountryDataUY|null
      */
-    public function getDataUY(): ?CountryDataUy
+    public function getDataUY(): ?CountryDataUY
     {
         return $this->DataUY;
     }
 
     /**
-     * @return CountryDataDo|null
+     * @return CountryDataDO|null
      */
-    public function getDataDO(): ?CountryDataDo
+    public function getDataDO(): ?CountryDataDO
     {
         return $this->DataDO;
     }

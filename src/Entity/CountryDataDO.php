@@ -8,7 +8,7 @@ namespace BambooPayment\Entity;
  * Class CountryDataDo
  * Object to store country data to Rep. Dominicana.
  */
-class CountryDataDo extends BambooPaymentObject
+class CountryDataDO extends BambooPaymentObject
 {
     /** @var string|null */
     private $Invoice;

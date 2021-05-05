@@ -2,7 +2,7 @@
 
 namespace BambooPaymentTests\Entity;
 
-use BambooPayment\Entity\CountryDataUy;
+use BambooPayment\Entity\CountryDataUY;
 use BambooPaymentTests\BaseTest;
 
 class CountryDataUyEntityTest extends BaseTest
@@ -13,12 +13,12 @@ class CountryDataUyEntityTest extends BaseTest
 
     public function testHydrate(): void
     {
-        $dataUy = new CountryDataUy();
+        $dataUy = new CountryDataUY();
         $data   = $this->getDataOfDataUy();
 
         $dataUy = $dataUy->hydrate($data);
 
-        self::assertInstanceOf(CountryDataUy::class, $dataUy);
+        self::assertInstanceOf(CountryDataUY::class, $dataUy);
         self::assertEquals($data[self::IS_FINAL_CONSUMER], $dataUy->getIsFinalConsumer());
         self::assertEquals($data[self::INVOICE], $dataUy->getInvoice());
         self::assertEquals($data[self::TAXABLE_AMOUNT], $dataUy->getTaxableAmount());
