@@ -16,7 +16,7 @@ The bindings require the following extensions in order to work properly:
 
 -   [`json`](https://secure.php.net/manual/en/book.json.php) (This extension implements the [» JavaScript Object Notation (JSON)](https://www.json.org) data-interchange format.)
 -   [`guzzle`](https://docs.guzzlephp.org/) (Guzzle is a PHP HTTP client to send HTTP requests and to integrate with web services.)
--   [`generated-hydrator"`](https://secure.php.net/manual/en/book.curl.php) (GeneratedHydrator is a library about high performance transition of data from arrays to objects and from objects to arrays.)
+-   [`generated-hydrator`](https://secure.php.net/manual/en/book.curl.php) (GeneratedHydrator is a library about high performance transition of data from arrays to objects and from objects to arrays.)
 
 
 If you use Composer, these dependencies should be handled automatically. If you install manually, you'll want to make sure that these extensions are available.
