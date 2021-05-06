@@ -101,19 +101,18 @@ class Purchase extends BambooPaymentObject
         $transaction         = new Transaction();
         $data['Transaction'] = $transaction->hydrate($data['Transaction']);
 
-
         if (null !== $data[self::CUSTOMER]) {
             $customer         = new Customer();
             $data['Customer'] = $customer->hydrate($data['Customer']);
         }
 
         if (null !== $data[self::DATA_UY]) {
-            $dataUy         = new CountryDataUY();
+            $dataUy              = new CountryDataUY();
             $data[self::DATA_UY] = $dataUy->hydrate($data[self::DATA_UY]);
         }
 
         if (null !== $data[self::DATA_DO]) {
-            $dataDo         = new CountryDataDO();
+            $dataDo              = new CountryDataDO();
             $data[self::DATA_DO] = $dataDo->hydrate($data[self::DATA_DO]);
         }
 
