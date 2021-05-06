@@ -14,7 +14,7 @@ You need PHP >= 7.4
 
 The bindings require the following extensions in order to work properly:
 
--   [`json`](https://secure.php.net/manual/en/book.json.php)
+-   [`json`](https://secure.php.net/manual/en/book.json.php) (This extension implements the [» JavaScript Object Notation (JSON)](https://www.json.org) data-interchange format.)
 -   [`guzzle`](https://docs.guzzlephp.org/) (Guzzle is a PHP HTTP client to send HTTP requests and to integrate with web services.)
 -   [`generated-hydrator"`](https://secure.php.net/manual/en/book.curl.php) (GeneratedHydrator is a library about high performance transition of data from arrays to objects and from objects to arrays.)
 
@@ -28,7 +28,13 @@ Full documentation: [Spanish][doc-es], [English][doc-en], [Portuguese][doc-pt].
 ## Installation
 
 #### Composer
-To install with Composer, simply add the requirement to your composer.json file:
+
+To install with Composer, simply run the following command:
+```php
+composer require bamboopayment/bamboopayment-sdk
+```
+
+Or you can manually add the requirement to your composer.json file:
 
 ```php
 {
@@ -41,11 +47,6 @@ Then install by running
 
 ```php
 composer.phar install
-```
-
-You can also install the package run the following command:
-```php
-composer require bamboopayment/bamboopayment-sdk
 ```
 
 
@@ -73,10 +74,12 @@ include "vendor/autoload.php";
 
    in your controller
 ```php
-    $bambooPaymentClient = new BambooPaymentClient([
-        'api_key' => PRIVATE_KEY,
-        'testing' => true,
-    ]);
+    $bambooPaymentClient = new BambooPaymentClient(
+        [
+            'api_key' => PRIVATE_KEY,
+            'testing' => true,
+        ]
+    );
 
     $customer = $bambooPaymentClient->customers->create(
         [
@@ -105,10 +108,12 @@ include "vendor/autoload.php";
 
    in your controller
 ```php
-    $bambooPaymentClient = new BambooPaymentClient([
-        'api_key' => PRIVATE_KEY,
-        'testing' => true,
-    ]);
+    $bambooPaymentClient = new BambooPaymentClient(
+        [
+            'api_key' => PRIVATE_KEY,
+            'testing' => true,
+        ]
+    );
 
     $purchase = $bambooPaymentClient->purchases->create(
         [
@@ -146,10 +151,14 @@ include "vendor/autoload.php";
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
+3. Commit your changes using the [Angular Contributing Guide](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#type) (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Run composer test to test your code (`composer test`)
 6. Create new Pull Request
+
+## Support
+
+For support, email soportetec@bamboopayment.com
 
 ## License
 
