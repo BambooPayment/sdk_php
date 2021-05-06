@@ -6,6 +6,12 @@ namespace BambooPayment\Entity;
 
 class Purchase extends BambooPaymentObject
 {
+    public const CUSTOMER    = 'Customer';
+    public const TRANSACTION = 'Transaction';
+    public const DATA_UY     = 'DataUY';
+    public const DATA_DO     = 'DataDO';
+    public const REFUND_LIST = 'RefundList';
+
     /** @var int */
     private $PurchaseId;
 
@@ -92,30 +98,32 @@ class Purchase extends BambooPaymentObject
 
     public function hydrate(array $data): self
     {
-        $customer         = new Customer();
-        $data['Customer'] = $customer->hydrate($data['Customer']);
-
         $transaction         = new Transaction();
         $data['Transaction'] = $transaction->hydrate($data['Transaction']);
 
-        if (null !== $data['DataUY']) {
-            $dataUy         = new CountryDataUY();
-            $data['DataUY'] = $dataUy->hydrate($data['DataUY']);
+        if (null !== $data[self::CUSTOMER]) {
+            $customer         = new Customer();
+            $data['Customer'] = $customer->hydrate($data['Customer']);
         }
 
-        if (null !== $data['DataDO']) {
-            $dataDo         = new CountryDataDO();
-            $data['DataDO'] = $dataDo->hydrate($data['DataDO']);
+        if (null !== $data[self::DATA_UY]) {
+            $dataUy              = new CountryDataUY();
+            $data[self::DATA_UY] = $dataUy->hydrate($data[self::DATA_UY]);
+        }
+
+        if (null !== $data[self::DATA_DO]) {
+            $dataDo              = new CountryDataDO();
+            $data[self::DATA_DO] = $dataDo->hydrate($data[self::DATA_DO]);
         }
 
         $refundHydrated = [];
-        $refunds        = $data['RefundList'] ?? [];
+        $refunds        = $data[self::REFUND_LIST] ?? [];
         if (\count($refunds) > 0) {
             foreach ($refunds as $refundData) {
                 $refund           = new RefundData();
                 $refundHydrated[] = $refund->hydrate($refundData);
             }
-            $data['RefundList'] = $refundHydrated;
+            $data[self::REFUND_LIST] = $refundHydrated;
         }
 
         return parent::hydrate($data);

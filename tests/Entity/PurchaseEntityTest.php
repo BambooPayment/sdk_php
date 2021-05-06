@@ -7,48 +7,97 @@ use BambooPaymentTests\BaseTest;
 
 class PurchaseEntityTest extends BaseTest
 {
+    /** const to keys of Purchase  **/
+    public const  CUSTOMER        = Purchase::CUSTOMER;
+    public const  TRANSACTION     = Purchase::TRANSACTION;
+    public const  DATA_UY         = Purchase::DATA_UY;
+    public const  DATA_DO         = Purchase::DATA_DO;
+    public const  REFUND_LIST     = Purchase::REFUND_LIST;
+    private const PURCHASE_ID     = 'PurchaseId';
+    private const CREATED         = 'Created';
+    private const TRX_TOKEN       = 'TrxToken';
+    private const ORDER           = 'Order';
+    private const AMOUNT          = 'Amount';
+    private const CAPTURE         = 'Capture';
+    private const ORIGINAL_AMOUNT = 'OriginalAmount';
+    private const TAXABLE_AMOUNT  = 'TaxableAmount';
+    private const TIP             = 'Tip';
+    private const INSTALLMENTS    = 'Installments';
+    private const CURRENCY        = 'Currency';
+    private const DESCRIPTION     = 'Description';
+
+    /** const to keys of Transaction  **/
+    private const TRANSACTION_ID          = TransactionEntityTest::TRANSACTION_ID;
+    private const CREATED_TRANSACTION     = TransactionEntityTest::CREATED;
+    private const AUTHORIZATION_DATE      = TransactionEntityTest::AUTHORIZATION_DATE;
+    private const TRANSACTION_STATUS_ID   = TransactionEntityTest::TRANSACTION_STATUS_ID;
+    private const STATUS                  = TransactionEntityTest::STATUS;
+    private const ERROR_CODE              = TransactionEntityTest::ERROR_CODE;
+    private const DESCRIPTION_TRANSACTION = TransactionEntityTest::DESCRIPTION;
+    private const APPROVAL_CODE           = TransactionEntityTest::APPROVAL_CODE;
+    private const STEPS                   = TransactionEntityTest::STEPS;
+
+
+    /** const to keys of Steps  **/
+    private const STEP                    = TransactionStepEntityTest::STEP;
+    private const CREATED_STEP            = TransactionStepEntityTest::CREATED;
+    private const STATUS_STEP             = TransactionStepEntityTest::STATUS;
+    private const RESPONSE_CODE           = TransactionStepEntityTest::RESPONSE_CODE;
+    private const RESPONSE_MESSAGE        = TransactionStepEntityTest::RESPONSE_MESSAGE;
+    private const ERROR                   = TransactionStepEntityTest::ERROR;
+    private const AUTHORIZATION_CODE      = TransactionStepEntityTest::AUTHORIZATION_CODE;
+    private const UNIQUE_ID               = TransactionStepEntityTest::UNIQUE_ID;
+    private const ACQUIRE_RESPONSE_DETAIL = TransactionStepEntityTest::ACQUIRE_RESPONSE_DETAIL;
+
+
+    /** const to keys of Customer  **/
+
+    /** const to keys of BillingAddress  **/
+
+    /** const to keys of PaymentProfile  **/
+
     public function testHydrate(): void
     {
         $purchase = new Purchase();
 
         $purchase = $purchase->hydrate(
             [
-                'PurchaseId'               => 90511,
-                'Created'                  => '2021-04-15T14:25:33.946',
-                'TrxToken'                 => null,
-                'Order'                    => '12345678',
-                'Transaction'              => [
-                    'TransactionID'       => 99021,
-                    'Created'             => '2021-04-15T14:25:33.937',
-                    'AuthorizationDate'   => '',
-                    'TransactionStatusId' => 3,
-                    'Status'              => 'PreAuthorized',
-                    'ErrorCode'           => '',
-                    'Description'         => null,
-                    'ApprovalCode'        => '123456',
-                    'Steps'               => [
+                self::PURCHASE_ID          => 90511,
+                self::CREATED              => '2021-04-15T14:25:33.946',
+                self::TRX_TOKEN            => null,
+                self::ORDER                => '12345678',
+                self::TRANSACTION          => [
+                    self::TRANSACTION_ID          => 99021,
+                    self::CREATED_TRANSACTION     => '2021-04-15T14:25:33.937',
+                    self::AUTHORIZATION_DATE      => '',
+                    self::TRANSACTION_STATUS_ID   => 3,
+                    self::STATUS                  => 'PreAuthorized',
+                    self::ERROR_CODE              => '',
+                    self::DESCRIPTION_TRANSACTION => null,
+                    self::APPROVAL_CODE           => '123456',
+                    self::STEPS                   => [
                         [
-                            'Step'                   => 'FirstData Pre-Authorization with CVV',
-                            'Created'                => '2021-04-15T14:25:35.067',
-                            'Status'                 => 'Pre-authorizacion OK',
-                            'ResponseCode'           => '0',
-                            'ResponseMessage'        => '00',
-                            'Error'                  => '',
-                            'AuthorizationCode'      => '123456',
-                            'UniqueID'               => null,
-                            'AcquirerResponseDetail' => ['PrimaryResponseCode' => '0', 'SecondaryResponseCode' => '0', 'ISO8583Code' => '00']
+                            self::STEP                    => 'FirstData Pre-Authorization with CVV',
+                            self::CREATED                 => '2021-04-15T14:25:35.067',
+                            self::STATUS                  => 'Pre-authorizacion OK',
+                            self::RESPONSE_CODE           => '0',
+                            self::RESPONSE_MESSAGE        => '00',
+                            self::ERROR                   => '',
+                            self::AUTHORIZATION_CODE      => '123456',
+                            self::UNIQUE_ID               => null,
+                            self::ACQUIRE_RESPONSE_DETAIL => ['PrimaryResponseCode' => '0', 'SecondaryResponseCode' => '0', 'ISO8583Code' => '00']
                         ]
                     ]
                 ],
-                'Capture'                  => false,
-                'Amount'                   => 10000,
-                'OriginalAmount'           => 10000,
-                'TaxableAmount'            => 0,
-                'Tip'                      => 0,
-                'Installments'             => 1,
-                'Currency'                 => 'UYU',
-                'Description'              => null,
-                'Customer'                 => [
+                self::CAPTURE              => false,
+                self::AMOUNT               => 10000,
+                self::ORIGINAL_AMOUNT      => 10000,
+                self::TAXABLE_AMOUNT       => 0,
+                self::TIP                  => 0,
+                self::INSTALLMENTS         => 1,
+                self::CURRENCY             => 'UYU',
+                self::DESCRIPTION          => null,
+                self::CUSTOMER             => [
                     'CustomerId'         => 53775,
                     'Created'            => '2021-04-15T14=>25=>23.240',
                     'CommerceCustomerId' => null,
@@ -97,19 +146,19 @@ class PurchaseEntityTest extends BaseTest
                     'DocumentTypeId'     => 2,
                     'PhoneNumber'        => '24022330'
                 ],
-                'RefundList'               => null,
+                self::REFUND_LIST          => null,
                 'PlanID'                   => null,
                 'UniqueID'                 => null,
                 'AdditionalData'           => null,
                 'CustomerUserAgent'        => null,
                 'CustomerIP'               => null,
                 'URL'                      => 'https://testapi.siemprepago.com/v1/api/Purchase/90511',
-                'DataUY'                   => [
+                self::DATA_UY              => [
                     'IsFinalConsumer' => true,
                     'Invoice'         => '1000',
                     'TaxableAmount'   => 0
                 ],
-                'DataDO'                   => null,
+                self::DATA_DO              => null,
                 'Acquirer'                 => [
                     'AcquirerID'     => 1,
                     'Name'           => 'FirstData',

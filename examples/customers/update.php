@@ -7,7 +7,7 @@ require __DIR__ . '/../../vendor/autoload.php';
 require_once __DIR__ . '/../init.php';
 
 try {
-    $customer = $stripe->customers->update(
+    $customer = $bambooPaymentClient->customers->update(
         53479,
         [
             'Email'          => 'Email222222@bamboopayment.com',

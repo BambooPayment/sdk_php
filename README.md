@@ -14,7 +14,7 @@ You need PHP >= 7.4
 
 The bindings require the following extensions in order to work properly:
 
--   [`ext-json`](https://secure.php.net/manual/en/book.json.php)
+-   [`json`](https://secure.php.net/manual/en/book.json.php) (This extension implements the [» JavaScript Object Notation (JSON)](https://www.json.org) data-interchange format.)
 -   [`guzzle`](https://docs.guzzlephp.org/) (Guzzle is a PHP HTTP client to send HTTP requests and to integrate with web services.)
 -   [`generated-hydrator`](https://secure.php.net/manual/en/book.curl.php) (GeneratedHydrator is a library about high performance transition of data from arrays to objects and from objects to arrays.)
 
@@ -74,10 +74,12 @@ include "vendor/autoload.php";
 
    in your controller
 ```php
-    $bambooPaymentClient = new BambooPaymentClient([
-        'api_key' => PRIVATE_KEY,
-        'testing' => true,
-    ]);
+    $bambooPaymentClient = new BambooPaymentClient(
+        [
+            'api_key' => PRIVATE_KEY,
+            'testing' => true,
+        ]
+    );
 
     $customer = $bambooPaymentClient->customers->create(
         [
@@ -106,10 +108,12 @@ include "vendor/autoload.php";
 
    in your controller
 ```php
-    $bambooPaymentClient = new BambooPaymentClient([
-        'api_key' => PRIVATE_KEY,
-        'testing' => true,
-    ]);
+    $bambooPaymentClient = new BambooPaymentClient(
+        [
+            'api_key' => PRIVATE_KEY,
+            'testing' => true,
+        ]
+    );
 
     $purchase = $bambooPaymentClient->purchases->create(
         [
@@ -151,6 +155,10 @@ include "vendor/autoload.php";
 4. Push to the branch (`git push origin my-new-feature`)
 5. Run composer test to test your code (`composer test`)
 6. Create new Pull Request
+
+## Support
+
+For support, email soportetec@bamboopayment.com
 
 ## License
 
