@@ -11,13 +11,15 @@ use BambooPaymentTests\SharedData;
  */
 class TransactionEntityTest extends SharedData
 {
-    private const TRANSACTION_ID        = 'TransactionId';
-    private const CREATED               = 'Created';
-    private const TRANSACTION_STATUS_ID = 'TransactionStatusId';
-    private const STATUS                = 'Status';
-    private const DESCRIPTION           = 'Description';
-    private const APPROVAL_CODE         = 'ApprovalCode';
-    private const STEPS                 = Transaction::STEPS;
+    public const TRANSACTION_ID        = 'TransactionId';
+    public const CREATED               = 'Created';
+    public const TRANSACTION_STATUS_ID = 'TransactionStatusId';
+    public const STATUS                = 'Status';
+    public const DESCRIPTION           = 'Description';
+    public const APPROVAL_CODE         = 'ApprovalCode';
+    public const STEPS                 = Transaction::STEPS;
+    public const AUTHORIZATION_DATE    = 'AuthorizationDate';
+    public const ERROR_CODE            = 'ErrorCode';
 
     public function testHydrate(): void
     {
