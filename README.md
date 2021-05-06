@@ -155,6 +155,10 @@ include "vendor/autoload.php";
 5. Run composer test to test your code (`composer test`)
 6. Create new Pull Request
 
+## Support
+
+For support, email soportetec@bamboopayment.com
+
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
