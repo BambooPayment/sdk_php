@@ -73,10 +73,12 @@ include "vendor/autoload.php";
 
    in your controller
 ```php
-    $bambooPaymentClient = new BambooPaymentClient([
-        'api_key' => PRIVATE_KEY,
-        'testing' => true,
-    ]);
+    $bambooPaymentClient = new BambooPaymentClient(
+        [
+            'api_key' => PRIVATE_KEY,
+            'testing' => true,
+        ]
+    );
 
     $customer = $bambooPaymentClient->customers->create(
         [
@@ -105,10 +107,12 @@ include "vendor/autoload.php";
 
    in your controller
 ```php
-    $bambooPaymentClient = new BambooPaymentClient([
-        'api_key' => PRIVATE_KEY,
-        'testing' => true,
-    ]);
+    $bambooPaymentClient = new BambooPaymentClient(
+        [
+            'api_key' => PRIVATE_KEY,
+            'testing' => true,
+        ]
+    );
 
     $purchase = $bambooPaymentClient->purchases->create(
         [
