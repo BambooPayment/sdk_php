@@ -16,7 +16,7 @@ The bindings require the following extensions in order to work properly:
 
 -   [`ext-json`](https://secure.php.net/manual/en/book.json.php)
 -   [`guzzle`](https://docs.guzzlephp.org/) (Guzzle is a PHP HTTP client to send HTTP requests and to integrate with web services.)
--   [`generated-hydrator"`](https://secure.php.net/manual/en/book.curl.php) (GeneratedHydrator is a library about high performance transition of data from arrays to objects and from objects to arrays.)
+-   [`generated-hydrator`](https://secure.php.net/manual/en/book.curl.php) (GeneratedHydrator is a library about high performance transition of data from arrays to objects and from objects to arrays.)
 
 
 If you use Composer, these dependencies should be handled automatically. If you install manually, you'll want to make sure that these extensions are available.
@@ -146,11 +146,10 @@ include "vendor/autoload.php";
 ## Contributing
 
 1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes using the [Angular Contributing Guide](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#type) (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Run composer test to test your code (`composer test`)
-6. Create new Pull Request
+2. Commit your changes using the [Angular Contributing Guide](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#type) (`git commit -am 'Add some feature'`)
+3. Push to the branch (`git push origin my-new-feature`)
+4. Run composer test to test your code (`composer test`)
+5. Create new Pull Request
 
 ## License
 
