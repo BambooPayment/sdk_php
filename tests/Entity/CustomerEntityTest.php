@@ -8,6 +8,27 @@ use BambooPaymentTests\BaseTest;
 
 class CustomerEntityTest extends BaseTest
 {
+    public const CUSTOMER_ID          = 'CustomerId';
+    public const CREATED              = 'Created';
+    public const COMMERCE_CUSTOMER_ID = 'CommerceCustomerId';
+    public const OWNER                = 'Owner';
+    public const EMAIL                = 'Email';
+    public const ENABLED              = 'Enabled';
+    public const SHIPPING_ADDRESS     = 'ShippingAddress';
+    public const BILLING_ADDRESS      = 'BillingAddress';
+    public const PLANS                = 'Plans';
+    public const ADDITIONAL_DATA      = 'AdditionalData';
+    public const PAYMENT_PROFILES     = 'PaymentProfiles';
+    public const CAPTURE_URL          = 'CaptureURL';
+    public const UNIQUE_ID            = 'UniqueID';
+    public const URL                  = 'URL';
+    public const FIRST_NAME           = 'FirstName';
+    public const LAST_NAME            = 'LastName';
+    public const DOC_NUMBER           = 'DocNumber';
+    public const DOCUMENT_TYPE_ID     = 'DocumentTypeId';
+    public const PHONE_NUMBER         = 'PhoneNumber';
+
+
     public function testHydrate(): void
     {
         $customer = new Customer();
@@ -15,14 +36,14 @@ class CustomerEntityTest extends BaseTest
         /** @var Customer $customer */
         $customer = $customer->hydrate(
             [
-                'CustomerId'         => 53479,
-                'Created'            => '2021-04-06T16:08:43.767',
-                'CommerceCustomerId' => null,
-                'Owner'              => 'Commerce',
-                'Email'              => 'Email222222@bamboopayment.com',
-                'Enabled'            => true,
-                'ShippingAddress'    => null,
-                'BillingAddress'     => [
+                self::CUSTOMER_ID          => 53479,
+                self::CREATED              => '2021-04-06T16:08:43.767',
+                self::COMMERCE_CUSTOMER_ID => null,
+                self::OWNER                => 'Commerce',
+                self::EMAIL                => 'Email222222@bamboopayment.com',
+                self::ENABLED              => true,
+                self::SHIPPING_ADDRESS     => null,
+                self::BILLING_ADDRESS      => [
                     'AddressId'     => 51615,
                     'AddressType'   => 1,
                     'Country'       => 'UY',
@@ -31,17 +52,17 @@ class CustomerEntityTest extends BaseTest
                     'PostalCode'    => null,
                     'City'          => 'MONTEVIDEO'
                 ],
-                'Plans'              => null,
-                'AdditionalData'     => null,
-                'PaymentProfiles'    => [],
-                'CaptureURL'         => 'https://testapi.siemprepago.com/v1/Capture/',
-                'UniqueID'           => 'UI_f6094ccb-7140-480d-af2f-52ea1fe35d6b',
-                'URL'                => 'https://testapi.siemprepago.com/v1/api/Customer/53479',
-                'FirstName'          => 'PrimerNombre 2222',
-                'LastName'           => 'PrimerApellido 2222',
-                'DocNumber'          => '12345672',
-                'DocumentTypeId'     => 2,
-                'PhoneNumber'        => '24022330'
+                self::PLANS                => null,
+                self::ADDITIONAL_DATA      => null,
+                self::PAYMENT_PROFILES     => [],
+                self::CAPTURE_URL          => 'https://testapi.siemprepago.com/v1/Capture/',
+                self::UNIQUE_ID            => 'UI_f6094ccb-7140-480d-af2f-52ea1fe35d6b',
+                self::URL                  => 'https://testapi.siemprepago.com/v1/api/Customer/53479',
+                self::FIRST_NAME           => 'PrimerNombre 2222',
+                self::LAST_NAME            => 'PrimerApellido 2222',
+                self::DOC_NUMBER           => '12345672',
+                self::DOCUMENT_TYPE_ID     => 2,
+                self::PHONE_NUMBER         => '24022330'
             ]
         );
 
@@ -79,24 +100,24 @@ class CustomerEntityTest extends BaseTest
         /** @var Customer $customer */
         $customer = $customer->hydrate(
             [
-                'CustomerId'         => 53479,
-                'Created'            => '2021-04-06T16:08:43.767',
-                'CommerceCustomerId' => null,
-                'Owner'              => 'Commerce',
-                'Email'              => 'Email222222@bamboopayment.com',
-                'Enabled'            => true,
-                'ShippingAddress'    => null,
-                'Plans'              => null,
-                'AdditionalData'     => null,
-                'PaymentProfiles'    => [],
-                'CaptureURL'         => 'https://testapi.siemprepago.com/v1/Capture/',
-                'UniqueID'           => 'UI_f6094ccb-7140-480d-af2f-52ea1fe35d6b',
-                'URL'                => 'https://testapi.siemprepago.com/v1/api/Customer/53479',
-                'FirstName'          => 'PrimerNombre 2222',
-                'LastName'           => 'PrimerApellido 2222',
-                'DocNumber'          => '12345672',
-                'DocumentTypeId'     => 2,
-                'PhoneNumber'        => '24022330'
+                self::CUSTOMER_ID          => 53479,
+                self::CREATED              => '2021-04-06T16:08:43.767',
+                self::COMMERCE_CUSTOMER_ID => null,
+                self::OWNER                => 'Commerce',
+                self::EMAIL                => 'Email222222@bamboopayment.com',
+                self::ENABLED              => true,
+                self::SHIPPING_ADDRESS     => null,
+                self::PLANS                => null,
+                self::ADDITIONAL_DATA      => null,
+                self::PAYMENT_PROFILES     => [],
+                self::CAPTURE_URL          => 'https://testapi.siemprepago.com/v1/Capture/',
+                self::UNIQUE_ID            => 'UI_f6094ccb-7140-480d-af2f-52ea1fe35d6b',
+                self::URL                  => 'https://testapi.siemprepago.com/v1/api/Customer/53479',
+                self::FIRST_NAME           => 'PrimerNombre 2222',
+                self::LAST_NAME            => 'PrimerApellido 2222',
+                self::DOC_NUMBER           => '12345672',
+                self::DOCUMENT_TYPE_ID     => 2,
+                self::PHONE_NUMBER         => '24022330'
             ]
         );
 
@@ -110,14 +131,14 @@ class CustomerEntityTest extends BaseTest
         /** @var Customer $customer */
         $customer = $customer->hydrate(
             [
-                'CustomerId'         => 53479,
-                'Created'            => '2021-04-06T16:08:43.767',
-                'CommerceCustomerId' => null,
-                'Owner'              => 'Commerce',
-                'Email'              => 'Email222222@bamboopayment.com',
-                'Enabled'            => true,
-                'ShippingAddress'    => null,
-                'BillingAddress'     => [
+                self::CUSTOMER_ID          => 53479,
+                self::CREATED              => '2021-04-06T16:08:43.767',
+                self::COMMERCE_CUSTOMER_ID => null,
+                self::OWNER                => 'Commerce',
+                self::EMAIL                => 'Email222222@bamboopayment.com',
+                self::ENABLED              => true,
+                self::SHIPPING_ADDRESS     => null,
+                self::BILLING_ADDRESS      => [
                     'AddressId'     => 51615,
                     'AddressType'   => 1,
                     'Country'       => 'UY',
@@ -126,9 +147,9 @@ class CustomerEntityTest extends BaseTest
                     'PostalCode'    => null,
                     'City'          => 'MONTEVIDEO'
                 ],
-                'Plans'              => null,
-                'AdditionalData'     => null,
-                'PaymentProfiles'    => [
+                self::PLANS                => null,
+                self::ADDITIONAL_DATA      => null,
+                self::PAYMENT_PROFILES     => [
                     [
                         'PaymentProfileId' => 55591,
                         'PaymentMediaId'   => 2,
@@ -149,14 +170,14 @@ class CustomerEntityTest extends BaseTest
                         'DocumentTypeId'   => null
                     ]
                 ],
-                'CaptureURL'         => 'https://testapi.siemprepago.com/v1/Capture/',
-                'UniqueID'           => 'UI_f6094ccb-7140-480d-af2f-52ea1fe35d6b',
-                'URL'                => 'https://testapi.siemprepago.com/v1/api/Customer/53479',
-                'FirstName'          => 'PrimerNombre 2222',
-                'LastName'           => 'PrimerApellido 2222',
-                'DocNumber'          => '12345672',
-                'DocumentTypeId'     => 2,
-                'PhoneNumber'        => '24022330'
+                self::CAPTURE_URL          => 'https://testapi.siemprepago.com/v1/Capture/',
+                self::UNIQUE_ID            => 'UI_f6094ccb-7140-480d-af2f-52ea1fe35d6b',
+                self::URL                  => 'https://testapi.siemprepago.com/v1/api/Customer/53479',
+                self::FIRST_NAME           => 'PrimerNombre 2222',
+                self::LAST_NAME            => 'PrimerApellido 2222',
+                self::DOC_NUMBER           => '12345672',
+                self::DOCUMENT_TYPE_ID     => 2,
+                self::PHONE_NUMBER         => '24022330'
             ]
         );
 

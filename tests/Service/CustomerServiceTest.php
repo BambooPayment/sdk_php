@@ -71,7 +71,8 @@ class CustomerServiceTest extends BaseTest
                 'LastName'           => 'PrimerApellido 2222',
                 'DocNumber'          => '12345672',
                 'DocumentTypeId'     => 2,
-                'PhoneNumber'        => '24022330'
+                'PhoneNumber'        => '24022330',
+                'Plans'              => null
             ],
             $customer
         );
