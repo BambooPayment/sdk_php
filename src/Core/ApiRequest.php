@@ -9,19 +9,38 @@ use BambooPayment\Exception\UnknownApiErrorException;
 use BambooPayment\HttpClient\HttpClient;
 use Exception;
 use Psr\Http\Message\ResponseInterface;
+use RuntimeException;
 use function array_merge;
 use function count;
 use function is_array;
 
 class ApiRequest
 {
-    private string $method;
-    private string $absUrl;
-    private array $params;
-    private array $headers;
-    private string $apiKey;
+    private const STATUS_CODE_200 = 200;
+    private const STATUS_CODE_201 = 201;
+    private const STATUS_CODE_422 = 422;
+
+    private string             $method;
+
+    private string             $absUrl;
+
+    private array              $params;
+
+    private array              $headers;
+
+    private string             $apiKey;
+
     private static ?HttpClient $httpClient = null;
 
+    /**
+     * ApiRequest constructor.
+     * @param string $method
+     * @param string $path
+     * @param array  $params
+     * @param string $apiKey
+     * @param string $apiBase
+     * @param array  $headers
+     */
     public function __construct(
         string $method,
         string $path,
@@ -40,7 +59,7 @@ class ApiRequest
     /**
      * Make a request.
      *
-     * @return \BambooPayment\Core\ApiResponse
+     * @return ApiResponse
      */
     public function request(): ApiResponse
     {
@@ -69,8 +88,8 @@ class ApiRequest
      *
      * @param string $method
      * @param string $absUrl
-     * @param array $params
-     * @param array $headers
+     * @param array  $params
+     * @param array  $headers
      *
      * @return ResponseInterface
      */
@@ -113,7 +132,7 @@ class ApiRequest
      * Check for a error in the API response and throw a Exception if it is needed.
      *
      * @param array|null $body
-     * @param int $code
+     * @param int        $code
      *
      * @throws UnknownApiErrorException|ApiErrorException|AuthenticationException|InvalidRequestException
      */
@@ -125,6 +144,11 @@ class ApiRequest
                 throw new InvalidRequestException('Invalid API route or response', $code, $body, null, null);
             }
 
+            if ($code !== self::STATUS_CODE_200
+                || $code !== self::STATUS_CODE_201) {
+                throw new RuntimeException('Internal error', self::STATUS_CODE_422);
+            }
+
             $errorData = $body[BambooPaymentClient::ARRAY_ERROR_KEY] ?? null;
             if (is_array($errorData) && count($errorData) > 0) {
                 $errorHandler->handleErrorResponse($body, $code);
@@ -134,6 +158,9 @@ class ApiRequest
         }
     }
 
+    /**
+     * @return HttpClient
+     */
     public function httpClient(): HttpClient
     {
         if (! self::$httpClient instanceof HttpClient) {
