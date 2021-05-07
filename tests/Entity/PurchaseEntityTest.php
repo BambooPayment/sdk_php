@@ -8,23 +8,34 @@ use BambooPaymentTests\BaseTest;
 class PurchaseEntityTest extends BaseTest
 {
     /** const to keys of Purchase  **/
-    public const  CUSTOMER        = Purchase::CUSTOMER;
-    public const  TRANSACTION     = Purchase::TRANSACTION;
-    public const  DATA_UY         = Purchase::DATA_UY;
-    public const  DATA_DO         = Purchase::DATA_DO;
-    public const  REFUND_LIST     = Purchase::REFUND_LIST;
-    private const PURCHASE_ID     = 'PurchaseId';
-    private const CREATED         = 'Created';
-    private const TRX_TOKEN       = 'TrxToken';
-    private const ORDER           = 'Order';
-    private const AMOUNT          = 'Amount';
-    private const CAPTURE         = 'Capture';
-    private const ORIGINAL_AMOUNT = 'OriginalAmount';
-    private const TAXABLE_AMOUNT  = 'TaxableAmount';
-    private const TIP             = 'Tip';
-    private const INSTALLMENTS    = 'Installments';
-    private const CURRENCY        = 'Currency';
-    private const DESCRIPTION     = 'Description';
+    public const  CUSTOMER                    = Purchase::CUSTOMER;
+    public const  TRANSACTION                 = Purchase::TRANSACTION;
+    public const  DATA_UY                     = Purchase::DATA_UY;
+    public const  DATA_DO                     = Purchase::DATA_DO;
+    public const  ACQUIRER                    = 'Acquirer';
+    private const PURCHASE_ID                 = 'PurchaseId';
+    private const CREATED                     = 'Created';
+    private const TRX_TOKEN                   = 'TrxToken';
+    private const ORDER                       = 'Order';
+    private const CAPTURE                     = 'Capture';
+    private const AMOUNT                      = 'Amount';
+    private const ORIGINAL_AMOUNT             = 'OriginalAmount';
+    private const TAXABLE_AMOUNT              = 'TaxableAmount';
+    private const TIP                         = 'Tip';
+    private const INSTALLMENTS                = 'Installments';
+    private const CURRENCY                    = 'Currency';
+    private const DESCRIPTION                 = 'Description';
+    public const  REFUND_LIST                 = Purchase::REFUND_LIST;
+    private const PLAN_ID                     = 'PlanID';
+    private const UNIQUE_ID                   = 'UniqueID';
+    private const ADDITIONAL_DATA             = 'AditionalData';
+    private const CUSTOMER_USER_AGENT         = 'CustomerUserAgent';
+    private const CUSTOMER_IP                 = 'CustomerIP';
+    private const URL                         = 'URL';
+    private const COMMERCE_ACTION             = 'CommerceAction';
+    private const PURCHASE_PAYMENT_PROFILE_ID = 'PurchasePaymentProfileId';
+    private const LOLYTA_PLAN                 = 'LolytaPlan';
+    private const DEVICE_FINGERPRINT_IDd      = 'DeviceFingerprintId';
 
     /** const to keys of Transaction  **/
     private const TRANSACTION_ID          = TransactionEntityTest::TRANSACTION_ID;
@@ -37,7 +48,6 @@ class PurchaseEntityTest extends BaseTest
     private const APPROVAL_CODE           = TransactionEntityTest::APPROVAL_CODE;
     private const STEPS                   = TransactionEntityTest::STEPS;
 
-
     /** const to keys of Steps  **/
     private const STEP                    = TransactionStepEntityTest::STEP;
     private const CREATED_STEP            = TransactionStepEntityTest::CREATED;
@@ -46,11 +56,29 @@ class PurchaseEntityTest extends BaseTest
     private const RESPONSE_MESSAGE        = TransactionStepEntityTest::RESPONSE_MESSAGE;
     private const ERROR                   = TransactionStepEntityTest::ERROR;
     private const AUTHORIZATION_CODE      = TransactionStepEntityTest::AUTHORIZATION_CODE;
-    private const UNIQUE_ID               = TransactionStepEntityTest::UNIQUE_ID;
+    private const STEP_UNIQUE_ID          = TransactionStepEntityTest::UNIQUE_ID;
     private const ACQUIRE_RESPONSE_DETAIL = TransactionStepEntityTest::ACQUIRE_RESPONSE_DETAIL;
 
-
     /** const to keys of Customer  **/
+    private const CUSTOMER_ID              = CustomerEntityTest::CUSTOMER_ID;
+    private const CUSTOMER_CREATED         = CustomerEntityTest::CREATED;
+    private const COMMERCE_CUSTOMER_ID     = CustomerEntityTest::COMMERCE_CUSTOMER_ID;
+    private const OWNER                    = CustomerEntityTest::OWNER;
+    private const EMAIL                    = CustomerEntityTest::EMAIL;
+    private const ENABLED                  = CustomerEntityTest::ENABLED;
+    private const SHIPPING_ADDRESS         = CustomerEntityTest::SHIPPING_ADDRESS;
+    private const BILLING_ADDRESS          = CustomerEntityTest::BILLING_ADDRESS;
+    private const PLANS                    = CustomerEntityTest::PLANS;
+    private const CUSTOMER_ADDITIONAL_DATA = CustomerEntityTest::ADDITIONAL_DATA;
+    private const PAYMENT_PROFILES         = CustomerEntityTest::PAYMENT_PROFILES;
+    private const CAPTURE_URL              = CustomerEntityTest::CAPTURE_URL;
+    private const CUSTOMER_UNIQUE_ID       = CustomerEntityTest::UNIQUE_ID;
+    private const CUSTOMER_URL             = CustomerEntityTest::URL;
+    private const FIRST_NAME               = CustomerEntityTest::FIRST_NAME;
+    private const LAST_NAME                = CustomerEntityTest::LAST_NAME;
+    private const DOC_NUMBER               = CustomerEntityTest::DOC_NUMBER;
+    private const DOCUMENT_TYPE_ID         = CustomerEntityTest::DOCUMENT_TYPE_ID;
+    private const PHONE_NUMBER             = CustomerEntityTest::PHONE_NUMBER;
 
     /** const to keys of BillingAddress  **/
 
@@ -62,11 +90,11 @@ class PurchaseEntityTest extends BaseTest
 
         $purchase = $purchase->hydrate(
             [
-                self::PURCHASE_ID          => 90511,
-                self::CREATED              => '2021-04-15T14:25:33.946',
-                self::TRX_TOKEN            => null,
-                self::ORDER                => '12345678',
-                self::TRANSACTION          => [
+                self::PURCHASE_ID                 => 90511,
+                self::CREATED                     => '2021-04-15T14:25:33.946',
+                self::TRX_TOKEN                   => null,
+                self::ORDER                       => '12345678',
+                self::TRANSACTION                 => [
                     self::TRANSACTION_ID          => 99021,
                     self::CREATED_TRANSACTION     => '2021-04-15T14:25:33.937',
                     self::AUTHORIZATION_DATE      => '',
@@ -84,28 +112,28 @@ class PurchaseEntityTest extends BaseTest
                             self::RESPONSE_MESSAGE        => '00',
                             self::ERROR                   => '',
                             self::AUTHORIZATION_CODE      => '123456',
-                            self::UNIQUE_ID               => null,
+                            self::STEP_UNIQUE_ID          => null,
                             self::ACQUIRE_RESPONSE_DETAIL => ['PrimaryResponseCode' => '0', 'SecondaryResponseCode' => '0', 'ISO8583Code' => '00']
                         ]
                     ]
                 ],
-                self::CAPTURE              => false,
-                self::AMOUNT               => 10000,
-                self::ORIGINAL_AMOUNT      => 10000,
-                self::TAXABLE_AMOUNT       => 0,
-                self::TIP                  => 0,
-                self::INSTALLMENTS         => 1,
-                self::CURRENCY             => 'UYU',
-                self::DESCRIPTION          => null,
-                self::CUSTOMER             => [
-                    'CustomerId'         => 53775,
-                    'Created'            => '2021-04-15T14=>25=>23.240',
-                    'CommerceCustomerId' => null,
-                    'Owner'              => 'Anonymous',
-                    'Email'              => 'juanperez123@bamboopayment.com',
-                    'Enabled'            => true,
-                    'ShippingAddress'    => null,
-                    'BillingAddress'     => [
+                self::CAPTURE                     => false,
+                self::AMOUNT                      => 10000,
+                self::ORIGINAL_AMOUNT             => 10000,
+                self::TAXABLE_AMOUNT              => 0,
+                self::TIP                         => 0,
+                self::INSTALLMENTS                => 1,
+                self::CURRENCY                    => 'UYU',
+                self::DESCRIPTION                 => null,
+                self::CUSTOMER                    => [
+                    self::CUSTOMER_ID          => 53775,
+                    self::CUSTOMER_CREATED     => '2021-04-15T14=>25=>23.240',
+                    self::COMMERCE_CUSTOMER_ID => null,
+                    self::OWNER                => 'Anonymous',
+                    self::EMAIL                => 'juanperez123@bamboopayment.com',
+                    self::ENABLED              => true,
+                    self::SHIPPING_ADDRESS     => null,
+                    self::BILLING_ADDRESS      => [
                         'AddressId'     => 0,
                         'AddressType'   => 1,
                         'Country'       => 'Uruguay',
@@ -114,9 +142,9 @@ class PurchaseEntityTest extends BaseTest
                         'PostalCode'    => null,
                         'City'          => 'MONTEVIDEO'
                     ],
-                    'Plans'              => null,
-                    'AdditionalData'     => null,
-                    'PaymentProfiles'    => [
+                    self::PLANS                => null,
+                    self::ADDITIONAL_DATA      => null,
+                    self::PAYMENT_PROFILES     => [
                         [
                             'PaymentProfileId' => 55501,
                             'PaymentMediaId'   => 2,
@@ -137,37 +165,37 @@ class PurchaseEntityTest extends BaseTest
                             'DocumentTypeId'   => null
                         ]
                     ],
-                    'CaptureURL'         => null,
-                    'UniqueID'           => null,
-                    'URL'                => 'https://testapi.siemprepago.com/v1/api/Customer/53775',
-                    'FirstName'          => 'Juan',
-                    'LastName'           => 'Perez',
-                    'DocNumber'          => '12345672',
-                    'DocumentTypeId'     => 2,
-                    'PhoneNumber'        => '24022330'
+                    self::CAPTURE_URL          => null,
+                    self::CUSTOMER_UNIQUE_ID   => null,
+                    self::URL                  => 'https://testapi.siemprepago.com/v1/api/Customer/53775',
+                    self::FIRST_NAME           => 'Juan',
+                    self::LAST_NAME            => 'Perez',
+                    self::DOC_NUMBER           => '12345672',
+                    self::DOCUMENT_TYPE_ID     => 2,
+                    self::PHONE_NUMBER         => '24022330'
                 ],
-                self::REFUND_LIST          => null,
-                'PlanID'                   => null,
-                'UniqueID'                 => null,
-                'AdditionalData'           => null,
-                'CustomerUserAgent'        => null,
-                'CustomerIP'               => null,
-                'URL'                      => 'https://testapi.siemprepago.com/v1/api/Purchase/90511',
-                self::DATA_UY              => [
+                self::REFUND_LIST                 => null,
+                self::PLAN_ID                     => null,
+                self::UNIQUE_ID                   => null,
+                self::ADDITIONAL_DATA             => null,
+                self::CUSTOMER_USER_AGENT         => null,
+                self::CUSTOMER_IP                 => null,
+                self::URL                         => 'https://testapi.siemprepago.com/v1/api/Purchase/90511',
+                self::DATA_UY                     => [
                     'IsFinalConsumer' => true,
                     'Invoice'         => '1000',
                     'TaxableAmount'   => 0
                 ],
-                self::DATA_DO              => null,
-                'Acquirer'                 => [
+                self::DATA_DO                     => null,
+                self::ACQUIRER                    => [
                     'AcquirerID'     => 1,
                     'Name'           => 'FirstData',
                     'CommerceNumber' => null
                 ],
-                'CommerceAction'           => null,
-                'PurchasePaymentProfileId' => 55501,
-                'LoyaltyPlan'              => null,
-                'DeviceFingerprintId'      => null
+                self::COMMERCE_ACTION             => null,
+                self::PURCHASE_PAYMENT_PROFILE_ID => 55501,
+                self::LOLYTA_PLAN                 => null,
+                self::DEVICE_FINGERPRINT_IDd      => null
             ]
         );
 
