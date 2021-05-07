@@ -30,6 +30,9 @@ class Customer extends BambooPaymentObject
     /** @var Address|null */
     private $BillingAddress;
 
+    /** @var String|null */
+    private $Plans;
+
     /** @var array|null */
     private $AdditionalData;
 
@@ -228,5 +231,13 @@ class Customer extends BambooPaymentObject
     public function getPhoneNumber(): ?string
     {
         return $this->PhoneNumber;
+    }
+
+    /**
+     * @return String|null
+     */
+    public function getPlans(): ?string
+    {
+        return $this->Plans;
     }
 }
