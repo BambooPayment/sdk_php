@@ -62,7 +62,6 @@ class ErrorHandler
                 throw new BadMethodCallException($bambooPaymentMessage, $code);
             case 408:
                 throw new ApiConnectionException($bambooPaymentMessage, $code, $body, $bambooPaymentErrorCode, $bambooPaymentDetail);
-
             default:
                 throw new UnknownApiErrorException($bambooPaymentMessage, $code, $body, $bambooPaymentErrorCode, $bambooPaymentDetail);
         }

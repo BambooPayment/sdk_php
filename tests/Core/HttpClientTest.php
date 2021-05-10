@@ -45,7 +45,7 @@ class HttpClientTest extends TestCase
                 [
                     'headers'     => [],
                     'http_errors' => false,
-                    'json'        => ['param' => true]
+                    'body'        => '{"param":true}'
                 ]
             );
 

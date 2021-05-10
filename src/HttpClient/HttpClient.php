@@ -38,6 +38,9 @@ class HttpClient
         $this->client = new GuzzleClient();
     }
 
+    /**
+     * @throws \JsonException
+     */
     public function request(string $method, string $absUrl, array $headers, array $params): ResponseInterface
     {
         $method = strtolower($method);
@@ -51,7 +54,7 @@ class HttpClient
 
         if ($method === 'post') {
             $requestParams = [
-                'json' => $params
+                'body' => \json_encode($params, JSON_THROW_ON_ERROR | JSON_FORCE_OBJECT)
             ];
         }
 
