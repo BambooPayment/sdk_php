@@ -6,7 +6,7 @@ namespace BambooPayment\Entity;
 
 /**
  * Class Address
- * Adress of a customer.
+ * Address of a customer.
  */
 class Address extends BambooPaymentObject
 {
