@@ -9,6 +9,8 @@ namespace BambooPayment\Entity;
  */
 class Account extends BambooPaymentObject
 {
+    public const ADDRESS = 'Address';
+
     /** @var int */
     private $AccountId;
 
@@ -25,13 +27,23 @@ class Account extends BambooPaymentObject
     private $Commerce;
 
     /** @var string */
-    private $PrivateAcountKey;
-
-    /** @var string */
     private $PrivateAccountKey;
 
-    /*** @var Address */
+    /** @var string */
+    private $PublicAccountKey;
+
+    /** @var Address */
     private $Address;
+
+    public function hydrate(array $data): self
+    {
+        if (null !== $data[self::ADDRESS]) {
+            $address             = new Address();
+            $data[self::ADDRESS] = $address->hydrate($data[self::ADDRESS]);
+        }
+
+        return parent::hydrate($data);
+    }
 
     /**
      * @return int
@@ -76,17 +88,17 @@ class Account extends BambooPaymentObject
     /**
      * @return string
      */
-    public function getPrivateAcountKey(): string
+    public function getPrivateAccountKey(): string
     {
-        return $this->PrivateAcountKey;
+        return $this->PrivateAccountKey;
     }
 
     /**
      * @return string
      */
-    public function getPrivateAccountKey(): string
+    public function getPublicAccountKey(): string
     {
-        return $this->PrivateAccountKey;
+        return $this->PublicAccountKey;
     }
 
     /**
