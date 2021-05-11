@@ -3,32 +3,24 @@
 namespace BambooPaymentTests\Entity;
 
 use BambooPayment\Entity\Address;
-use BambooPaymentTests\BaseTest;
+use BambooPaymentTests\SharedData;
 
-class AddressEntityTest extends BaseTest
+class AddressEntityTest extends SharedData
 {
+    public const ADDRESS_ID     = 'AddressId';
+    public const ADDRESS_TYPE   = 'AddressType';
+    public const COUNTRY        = 'Country';
+    public const STATE          = 'State';
+    public const ADDRESS_DETAIL = 'AddressDetail';
+    public const POSTAL_CODE    = 'PostalCode';
+    public const CITY           = 'City';
+
     public function testHydrate(): void
     {
         $address = new Address();
-
+        $data    = $this->getDataOfAddress();
+        $address = $address->hydrate($data);
         /** @var Address $address */
-        $address = $address->hydrate(
-            [
-                'AddressId'     => 51615,
-                'AddressType'   => 1,
-                'Country'       => 'UY',
-                'State'         => 'Montevideo',
-                'AddressDetail' => '10000',
-                'PostalCode'    => null,
-                'City'          => 'MONTEVIDEO'
-            ]
-        );
-
-        self::assertEquals(51615, $address->getAddressId());
-        self::assertEquals(1, $address->getAddressType());
-        self::assertEquals('UY', $address->getCountry());
-        self::assertEquals('Montevideo', $address->getState());
-        self::assertEquals('MONTEVIDEO', $address->getCity());
-        self::assertNull($address->getPostalCode());
+        $this->makeTestOfAddress($data, $address);
     }
 }
