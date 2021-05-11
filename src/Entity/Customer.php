@@ -4,6 +4,10 @@
 
 namespace BambooPayment\Entity;
 
+/**
+ * Class Customer
+ * @package BambooPayment\Entity
+ */
 class Customer extends BambooPaymentObject
 {
     /** @var int */
@@ -63,6 +67,10 @@ class Customer extends BambooPaymentObject
     /** @var string|null */
     private $PhoneNumber;
 
+    /**
+     * @param array $data
+     * @return $this
+     */
     public function hydrate(array $data): self
     {
         $shippingAddress = $data['ShippingAddress'] ?? null;
