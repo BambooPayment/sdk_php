@@ -4,6 +4,10 @@
 
 namespace BambooPayment\Entity;
 
+/**
+ * Class Purchase
+ * @package BambooPayment\Entity
+ */
 class Purchase extends BambooPaymentObject
 {
     public const CUSTOMER    = 'Customer';
@@ -96,6 +100,10 @@ class Purchase extends BambooPaymentObject
     /** @var string|null */
     private $DeviceFingerprId;
 
+    /**
+     * @param array $data
+     * @return $this
+     */
     public function hydrate(array $data): self
     {
         if (null !== $data[self::TRANSACTION]) {

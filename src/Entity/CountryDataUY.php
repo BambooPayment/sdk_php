@@ -16,7 +16,7 @@ class CountryDataUY extends BambooPaymentObject
     /** @var string|null */
     private $Invoice;
 
-    /** @var string|null */
+    /** @var float|null */
     private $TaxableAmount;
 
     /**
@@ -36,9 +36,9 @@ class CountryDataUY extends BambooPaymentObject
     }
 
     /**
-     * @return string|null
+     * @return float|null
      */
-    public function getTaxableAmount(): ?string
+    public function getTaxableAmount(): ?float
     {
         return $this->TaxableAmount;
     }
