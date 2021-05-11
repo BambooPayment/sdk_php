@@ -27,7 +27,7 @@ class Commerce extends BambooPaymentObject
     /** @var string */
     private $DocumentType;
 
-    /*** @var Address */
+    /** @var Address */
     private $Address;
 
     /**

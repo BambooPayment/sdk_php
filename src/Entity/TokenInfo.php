@@ -9,7 +9,7 @@ namespace BambooPayment\Entity;
  */
 class TokenInfo extends BambooPaymentObject
 {
-    /** @var int */
+    /** @var string */
     private $TokenId;
 
     /** @var string */
@@ -34,15 +34,15 @@ class TokenInfo extends BambooPaymentObject
     private $CardType;
 
     /** @var string */
-    private $CardEpMonth;
+    private $CardExpMonth;
 
     /** @var string */
     private $CardExpYear;
 
     /**
-     * @return int
+     * @return string
      */
-    public function getTokenId(): int
+    public function getTokenId(): string
     {
         return $this->TokenId;
     }
@@ -106,9 +106,9 @@ class TokenInfo extends BambooPaymentObject
     /**
      * @return string
      */
-    public function getCardEpMonth(): string
+    public function getCardExpMonth(): string
     {
-        return $this->CardEpMonth;
+        return $this->CardExpMonth;
     }
 
     /**
