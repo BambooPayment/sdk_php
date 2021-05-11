@@ -3,6 +3,7 @@
 namespace BambooPaymentTests\Entity;
 
 use BambooPayment\Entity\Transaction;
+use BambooPayment\Entity\TransactionStep;
 use BambooPaymentTests\SharedData;
 
 /**
@@ -26,13 +27,29 @@ class TransactionEntityTest extends SharedData
         $transaction = new Transaction();
         $data        = $this->getDataOfTransaction();
         $transaction = $transaction->hydrate($data);
+
         self::assertEquals($data[self::TRANSACTION_ID], $transaction->getTransactionId());
         self::assertEquals($data[self::CREATED], $transaction->getCreated());
         self::assertEquals($data[self::TRANSACTION_STATUS_ID], $transaction->getTransactionStatusId());
         self::assertEquals($data[self::STATUS], $transaction->getStatus());
         self::assertEquals($data[self::DESCRIPTION], $transaction->getDescription());
         self::assertEquals($data[self::APPROVAL_CODE], $transaction->getApprovalCode());
-        self::assertNotEmpty($transaction->getSteps());
+
+        $steps = $transaction->getSteps();
+        self::assertNotEmpty($steps);
+        $this->makeTestsOfSteps($data[self::STEPS], $steps);
+    }
+
+    /**
+     * @param array $dataOfSteps
+     * @param TransactionStep[] $steps
+     */
+    private function makeTestsOfSteps(array $dataOfSteps, array $steps): void
+    {
+        foreach ($steps as $index => $step) {
+            /* @var TransactionStep $step */
+            $this->makeTestOfTransactionStep($dataOfSteps[$index], $step);
+        }
     }
 
     private function getDataOfTransaction(): array
