@@ -5,6 +5,10 @@ namespace BambooPaymentTests\Entity;
 use BambooPayment\Entity\Purchase;
 use BambooPaymentTests\BaseTest;
 
+/**
+ * Class PurchaseEntityTest
+ * @package BambooPaymentTests\Entity
+ */
 class PurchaseEntityTest extends BaseTest
 {
     /** const to keys of Purchase  **/
@@ -80,7 +84,19 @@ class PurchaseEntityTest extends BaseTest
     private const DOCUMENT_TYPE_ID         = CustomerEntityTest::DOCUMENT_TYPE_ID;
     private const PHONE_NUMBER             = CustomerEntityTest::PHONE_NUMBER;
 
-    /** const to keys of BillingAddress  **/
+    /** const to keys of Address  **/
+    public const ADDRESS_ID     = AddressEntityTest::ADDRESS_ID;
+    public const ADDRESS_TYPE   = AddressEntityTest::ADDRESS_TYPE;
+    public const COUNTRY        = AddressEntityTest::COUNTRY;
+    public const STATE          = AddressEntityTest::STATE;
+    public const ADDRESS_DETAIL = AddressEntityTest::ADDRESS_DETAIL;
+    public const POSTAL_CODE    = AddressEntityTest::POSTAL_CODE;
+    public const CITY           = AddressEntityTest::CITY;
+
+    /** const to keys of Acquirer  **/
+
+    /** const to keys of DataUY  **/
+
 
     /** const to keys of PaymentProfile  **/
 
@@ -94,29 +110,7 @@ class PurchaseEntityTest extends BaseTest
                 self::CREATED                     => '2021-04-15T14:25:33.946',
                 self::TRX_TOKEN                   => null,
                 self::ORDER                       => '12345678',
-                self::TRANSACTION                 => [
-                    self::TRANSACTION_ID          => 99021,
-                    self::CREATED_TRANSACTION     => '2021-04-15T14:25:33.937',
-                    self::AUTHORIZATION_DATE      => '',
-                    self::TRANSACTION_STATUS_ID   => 3,
-                    self::STATUS                  => 'PreAuthorized',
-                    self::ERROR_CODE              => '',
-                    self::DESCRIPTION_TRANSACTION => null,
-                    self::APPROVAL_CODE           => '123456',
-                    self::STEPS                   => [
-                        [
-                            self::STEP                    => 'FirstData Pre-Authorization with CVV',
-                            self::CREATED                 => '2021-04-15T14:25:35.067',
-                            self::STATUS                  => 'Pre-authorizacion OK',
-                            self::RESPONSE_CODE           => '0',
-                            self::RESPONSE_MESSAGE        => '00',
-                            self::ERROR                   => '',
-                            self::AUTHORIZATION_CODE      => '123456',
-                            self::STEP_UNIQUE_ID          => null,
-                            self::ACQUIRE_RESPONSE_DETAIL => ['PrimaryResponseCode' => '0', 'SecondaryResponseCode' => '0', 'ISO8583Code' => '00']
-                        ]
-                    ]
-                ],
+                self::TRANSACTION                 => $this->getDataOfTransaction(),
                 self::CAPTURE                     => false,
                 self::AMOUNT                      => 10000,
                 self::ORIGINAL_AMOUNT             => 10000,
@@ -125,55 +119,7 @@ class PurchaseEntityTest extends BaseTest
                 self::INSTALLMENTS                => 1,
                 self::CURRENCY                    => 'UYU',
                 self::DESCRIPTION                 => null,
-                self::CUSTOMER                    => [
-                    self::CUSTOMER_ID          => 53775,
-                    self::CUSTOMER_CREATED     => '2021-04-15T14=>25=>23.240',
-                    self::COMMERCE_CUSTOMER_ID => null,
-                    self::OWNER                => 'Anonymous',
-                    self::EMAIL                => 'juanperez123@bamboopayment.com',
-                    self::ENABLED              => true,
-                    self::SHIPPING_ADDRESS     => null,
-                    self::BILLING_ADDRESS      => [
-                        'AddressId'     => 0,
-                        'AddressType'   => 1,
-                        'Country'       => 'Uruguay',
-                        'State'         => 'Montevideo',
-                        'AddressDetail' => 'Av. Sarmiento 2260',
-                        'PostalCode'    => null,
-                        'City'          => 'MONTEVIDEO'
-                    ],
-                    self::PLANS                => null,
-                    self::ADDITIONAL_DATA      => null,
-                    self::PAYMENT_PROFILES     => [
-                        [
-                            'PaymentProfileId' => 55501,
-                            'PaymentMediaId'   => 2,
-                            'Created'          => '2021-04-15T17=>25=>23.240',
-                            'LastUpdate'       => null,
-                            'Brand'            => 'MasterCard',
-                            'CardOwner'        => 'AAA',
-                            'Bin'              => null,
-                            'IssuerBank'       => 'Santander',
-                            'Installments'     => '1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18;19;20;21;22;23;24',
-                            'Type'             => 'CreditCard',
-                            'IdCommerceToken'  => 0,
-                            'Token'            => null,
-                            'Expiration'       => '202212',
-                            'Last4'            => '0001',
-                            'Enabled'          => null,
-                            'DocumentNumber'   => null,
-                            'DocumentTypeId'   => null
-                        ]
-                    ],
-                    self::CAPTURE_URL          => null,
-                    self::CUSTOMER_UNIQUE_ID   => null,
-                    self::URL                  => 'https://testapi.siemprepago.com/v1/api/Customer/53775',
-                    self::FIRST_NAME           => 'Juan',
-                    self::LAST_NAME            => 'Perez',
-                    self::DOC_NUMBER           => '12345672',
-                    self::DOCUMENT_TYPE_ID     => 2,
-                    self::PHONE_NUMBER         => '24022330'
-                ],
+                self::CUSTOMER                    => $this->getDataOfCustomer(),
                 self::REFUND_LIST                 => null,
                 self::PLAN_ID                     => null,
                 self::UNIQUE_ID                   => null,
@@ -181,17 +127,9 @@ class PurchaseEntityTest extends BaseTest
                 self::CUSTOMER_USER_AGENT         => null,
                 self::CUSTOMER_IP                 => null,
                 self::URL                         => 'https://testapi.siemprepago.com/v1/api/Purchase/90511',
-                self::DATA_UY                     => [
-                    'IsFinalConsumer' => true,
-                    'Invoice'         => '1000',
-                    'TaxableAmount'   => 0
-                ],
+                self::DATA_UY                     => $this->getDataOfDataUY(),
                 self::DATA_DO                     => null,
-                self::ACQUIRER                    => [
-                    'AcquirerID'     => 1,
-                    'Name'           => 'FirstData',
-                    'CommerceNumber' => null
-                ],
+                self::ACQUIRER                    => $this->getDataOfAcquirer(),
                 self::COMMERCE_ACTION             => null,
                 self::PURCHASE_PAYMENT_PROFILE_ID => 55501,
                 self::LOLYTA_PLAN                 => null,
@@ -229,5 +167,103 @@ class PurchaseEntityTest extends BaseTest
         self::assertNull($purchase->getLoyaltyPlan());
         self::assertNull($purchase->getDeviceFingerprId());
         self::assertEquals(53775, $purchase->getCustomer()->getCustomerId());
+    }
+
+    private function getDataOfAcquirer(): array
+    {
+        return [
+            'AcquirerID'     => 1,
+            'Name'           => 'FirstData',
+            'CommerceNumber' => null
+        ];
+    }
+
+    private function getDataOfDataUY(): array
+    {
+        return [
+            'IsFinalConsumer' => true,
+            'Invoice'         => '1000',
+            'TaxableAmount'   => 0
+        ];
+    }
+
+    private function getDataOfTransaction(): array
+    {
+        return [
+            self::TRANSACTION_ID          => 99021,
+            self::CREATED_TRANSACTION     => '2021-04-15T14:25:33.937',
+            self::AUTHORIZATION_DATE      => '',
+            self::TRANSACTION_STATUS_ID   => 3,
+            self::STATUS                  => 'PreAuthorized',
+            self::ERROR_CODE              => '',
+            self::DESCRIPTION_TRANSACTION => null,
+            self::APPROVAL_CODE           => '123456',
+            self::STEPS                   => [
+                [
+                    self::STEP                    => 'FirstData Pre-Authorization with CVV',
+                    self::CREATED                 => '2021-04-15T14:25:35.067',
+                    self::STATUS                  => 'Pre-authorizacion OK',
+                    self::RESPONSE_CODE           => '0',
+                    self::RESPONSE_MESSAGE        => '00',
+                    self::ERROR                   => '',
+                    self::AUTHORIZATION_CODE      => '123456',
+                    self::STEP_UNIQUE_ID          => null,
+                    self::ACQUIRE_RESPONSE_DETAIL => ['PrimaryResponseCode' => '0', 'SecondaryResponseCode' => '0', 'ISO8583Code' => '00']
+                ]
+            ]
+        ];
+    }
+
+    private function getDataOfCustomer(): array
+    {
+        return [
+            self::CUSTOMER_ID          => 53775,
+            self::CUSTOMER_CREATED     => '2021-04-15T14=>25=>23.240',
+            self::COMMERCE_CUSTOMER_ID => null,
+            self::OWNER                => 'Anonymous',
+            self::EMAIL                => 'juanperez123@bamboopayment.com',
+            self::ENABLED              => true,
+            self::SHIPPING_ADDRESS     => null,
+            self::BILLING_ADDRESS      => [
+                self::ADDRESS_ID     => 0,
+                self::ADDRESS_TYPE   => 1,
+                self::COUNTRY        => 'Uruguay',
+                self::STATE          => 'Montevideo',
+                self::ADDRESS_DETAIL => 'Av. Sarmiento 2260',
+                self::POSTAL_CODE    => null,
+                self::CITY           => 'MONTEVIDEO'
+            ],
+            self::PLANS                => null,
+            self::ADDITIONAL_DATA      => null,
+            self::PAYMENT_PROFILES     => [
+                [
+                    'PaymentProfileId' => 55501,
+                    'PaymentMediaId'   => 2,
+                    'Created'          => '2021-04-15T17=>25=>23.240',
+                    'LastUpdate'       => null,
+                    'Brand'            => 'MasterCard',
+                    'CardOwner'        => 'AAA',
+                    'Bin'              => null,
+                    'IssuerBank'       => 'Santander',
+                    'Installments'     => '1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18;19;20;21;22;23;24',
+                    'Type'             => 'CreditCard',
+                    'IdCommerceToken'  => 0,
+                    'Token'            => null,
+                    'Expiration'       => '202212',
+                    'Last4'            => '0001',
+                    'Enabled'          => null,
+                    'DocumentNumber'   => null,
+                    'DocumentTypeId'   => null
+                ]
+            ],
+            self::CAPTURE_URL          => null,
+            self::CUSTOMER_UNIQUE_ID   => null,
+            self::URL                  => 'https://testapi.siemprepago.com/v1/api/Customer/53775',
+            self::FIRST_NAME           => 'Juan',
+            self::LAST_NAME            => 'Perez',
+            self::DOC_NUMBER           => '12345672',
+            self::DOCUMENT_TYPE_ID     => 2,
+            self::PHONE_NUMBER         => '24022330'
+        ];
     }
 }

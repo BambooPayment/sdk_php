@@ -26,7 +26,6 @@ class TransactionStepEntityTest extends SharedData
         $transactionStep = new TransactionStep();
         $data            = $this->getDataOfTransactionStep();
         $transactionStep = $transactionStep->hydrate($data);
-        /* @var TransactionStep $transactionStep */
 
         $this->makeTestOfTransactionStep($data, $transactionStep);
     }

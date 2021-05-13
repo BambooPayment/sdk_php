@@ -5,6 +5,10 @@ namespace BambooPaymentTests\Entity;
 use BambooPayment\Entity\Account;
 use BambooPaymentTests\SharedData;
 
+/**
+ * Class AccountEntityTest
+ * @package BambooPaymentTests\Entity
+ */
 class AccountEntityTest extends SharedData
 {
     private const ACCOUNT_ID          = 'AccountId';

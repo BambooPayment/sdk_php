@@ -47,7 +47,6 @@ class TransactionEntityTest extends SharedData
     private function makeTestsOfSteps(array $dataOfSteps, array $steps): void
     {
         foreach ($steps as $index => $step) {
-            /* @var TransactionStep $step */
             $this->makeTestOfTransactionStep($dataOfSteps[$index], $step);
         }
     }
