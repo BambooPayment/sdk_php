@@ -195,8 +195,10 @@ class SharedData extends BaseTest
     protected function makeTestOfPaymentProfiles(array $dataPaymentProfiles, Customer $customer): void
     {
         $customerPaymentProfiles = $customer->getPaymentProfiles();
-        foreach ($customerPaymentProfiles as $index => $customerPaymentProfile) {
-            $this->makeTestOfPaymentProfile($dataPaymentProfiles[$index], $customerPaymentProfile);
+        if ($customerPaymentProfiles !== null) {
+            foreach ($customerPaymentProfiles as $index => $customerPaymentProfile) {
+                $this->makeTestOfPaymentProfile($dataPaymentProfiles[$index], $customerPaymentProfile);
+            }
         }
     }
 }
