@@ -5,8 +5,13 @@ namespace BambooPaymentTests\Entity;
 use BambooPayment\Entity\Address;
 use BambooPaymentTests\SharedData;
 
+/**
+ * Class AddressEntityTest
+ * @package BambooPaymentTests\Entity
+ */
 class AddressEntityTest extends SharedData
 {
+    /*** Entity attributes keys ***/
     public const ADDRESS_ID     = 'AddressId';
     public const ADDRESS_TYPE   = 'AddressType';
     public const COUNTRY        = 'Country';
@@ -20,7 +25,7 @@ class AddressEntityTest extends SharedData
         $address = new Address();
         $data    = $this->getDataOfAddress();
         $address = $address->hydrate($data);
-        /** @var Address $address */
+
         $this->makeTestOfAddress($data, $address);
     }
 }

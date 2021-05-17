@@ -9,6 +9,8 @@ namespace BambooPayment\Entity;
  */
 class Commerce extends BambooPaymentObject
 {
+    public const ADDRESS = 'Address';
+
     /** @var int */
     private $CommerceID;
 
@@ -29,6 +31,16 @@ class Commerce extends BambooPaymentObject
 
     /** @var Address */
     private $Address;
+
+    public function hydrate(array $data): self
+    {
+        if (null !== $data[self::ADDRESS]) {
+            $address             = new Address();
+            $data[self::ADDRESS] = $address->hydrate($data[self::ADDRESS]);
+        }
+
+        return parent::hydrate($data);
+    }
 
     /**
      * @return int

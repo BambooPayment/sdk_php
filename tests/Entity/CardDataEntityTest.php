@@ -11,6 +11,7 @@ use BambooPaymentTests\BaseTest;
  */
 class CardDataEntityTest extends BaseTest
 {
+    /*** Entity attributes keys ***/
     private const CARDHOLDER_NAME = 'CardholderName';
     private const PAN             = 'Pan';
     private const CVV             = 'CVV';
