@@ -5,6 +5,10 @@ namespace BambooPaymentTests\Entity;
 use BambooPayment\Entity\TokenInfo;
 use BambooPaymentTests\BaseTest;
 
+/**
+ * Class TokenInfoEntityTest
+ * @package BambooPaymentTests\Entity
+ */
 class TokenInfoEntityTest extends BaseTest
 {
     private const TOKEN_ID       = 'TokenId';
@@ -22,10 +26,8 @@ class TokenInfoEntityTest extends BaseTest
     public function testHydrate(): void
     {
         $tokenInfo = new TokenInfo();
-
         $data      = $this->getDataOfTokenInfo();
         $tokenInfo = $tokenInfo->hydrate($data);
-        /* @var TokenInfo $tokenInfo */
 
         self::assertEquals($data[self::TOKEN_ID], $tokenInfo->getTokenId());
         self::assertEquals($data[self::CREATED], $tokenInfo->getCreated());

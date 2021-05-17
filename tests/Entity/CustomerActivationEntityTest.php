@@ -5,8 +5,13 @@ namespace BambooPaymentTests\Entity;
 use BambooPayment\Entity\CustomerActivation;
 use BambooPaymentTests\BaseTest;
 
+/**
+ * Class CustomerActivationEntityTest
+ * @package BambooPaymentTests\Entity
+ */
 class CustomerActivationEntityTest extends BaseTest
 {
+    /*** Entity attributes keys ***/
     private const TOKEN           = 'Token';
     private const ACTIVATION_CODE = 'ActivationCode';
 
@@ -14,7 +19,6 @@ class CustomerActivationEntityTest extends BaseTest
     {
         $customerActivation = new CustomerActivation();
         $data               = $this->getDataOfCustomerActivation();
-
         $customerActivation = $customerActivation->hydrate($data);
 
         self::assertInstanceOf(CustomerActivation::class, $customerActivation);

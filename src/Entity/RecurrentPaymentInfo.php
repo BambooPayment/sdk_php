@@ -10,7 +10,7 @@ namespace BambooPayment\Entity;
 class RecurrentPaymentInfo extends BambooPaymentObject
 {
     /** @var string|boolean */
-    private $FristTransaction;
+    private $FirstTransaction;
 
     /** @var string */
     private $RecurringIndicator;
@@ -18,9 +18,9 @@ class RecurrentPaymentInfo extends BambooPaymentObject
     /**
      * @return bool|string
      */
-    public function getFristTransaction()
+    public function getFirstTransaction()
     {
-        return $this->FristTransaction;
+        return $this->FirstTransaction;
     }
 
     /**
