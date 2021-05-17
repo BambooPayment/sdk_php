@@ -11,6 +11,7 @@ use BambooPaymentTests\SharedData;
  */
 class AccountEntityTest extends SharedData
 {
+    /*** Entity attributes keys ***/
     private const ACCOUNT_ID          = 'AccountId';
     private const NAME                = 'Name';
     private const PHONE               = 'Phone';

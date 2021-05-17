@@ -7,6 +7,7 @@ use BambooPaymentTests\BaseTest;
 
 class CountryDataDOEntityTest extends BaseTest
 {
+    /*** Entity attributes keys ***/
     private const INVOICE = 'Invoice';
     private const TAX     = 'Tax';
 

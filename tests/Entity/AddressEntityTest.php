@@ -11,6 +11,7 @@ use BambooPaymentTests\SharedData;
  */
 class AddressEntityTest extends SharedData
 {
+    /*** Entity attributes keys ***/
     public const ADDRESS_ID     = 'AddressId';
     public const ADDRESS_TYPE   = 'AddressType';
     public const COUNTRY        = 'Country';

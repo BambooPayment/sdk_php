@@ -11,6 +11,7 @@ use BambooPaymentTests\BaseTest;
  */
 class CustomerActivationEntityTest extends BaseTest
 {
+    /*** Entity attributes keys ***/
     private const TOKEN           = 'Token';
     private const ACTIVATION_CODE = 'ActivationCode';
 

@@ -51,7 +51,7 @@ class TransactionEntityTest extends SharedData
         }
     }
 
-    private function getDataOfTransaction(): array
+    protected function getDataOfTransaction(): array
     {
         return [
             self::TRANSACTION_ID        => '100492',

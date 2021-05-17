@@ -5,6 +5,10 @@ namespace BambooPaymentTests\Entity;
 use BambooPayment\Entity\RefundData;
 use BambooPaymentTests\BaseTest;
 
+/**
+ * Class RefundEntityTest
+ * @package BambooPaymentTests\Entity
+ */
 class RefundEntityTest extends BaseTest
 {
     private const PURCHASE_REFUND_ID = 'PurchaseRefundId';
