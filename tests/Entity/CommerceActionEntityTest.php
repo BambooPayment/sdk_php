@@ -21,7 +21,7 @@ class CommerceActionEntityTest extends BaseTest
         $commerceAction = new CommerceAction();
         $data           = $this->getDataOfCommerceAction();
 
-        /** @var CommerceAction $refund */
+        /** @var CommerceAction $commerceAction */
         $commerceAction = $commerceAction->hydrate($data);
 
         self::assertEquals($data[self::ACTION_TYPE], $commerceAction->getActionType());
