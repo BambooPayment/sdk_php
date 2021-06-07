@@ -8,15 +8,9 @@ parameters:
     checkGenericClassInNonGenericObjectType: false
     checkMissingIterableValueType: false
     ignoreErrors:
-        - '#Parameter \#2 \$address of method BambooPaymentTests\\SharedData\::makeTestOfAddress\(\) expects BambooPayment\\Entity\\Address, BambooPayment\\Entity\\BambooPaymentObject given.#'
         - '#Call to method BambooPaymentTests\\SharedData\::getDataOfDataUy\(\) with incorrect case: getDataOfDataUY#'
-        - '#Method BambooPayment\\Entity\\Account\::hydrate\(\) should return BambooPayment\\Entity\\Account but returns BambooPayment\\Entity\\BambooPaymentObject.#'
-        - '#Method BambooPayment\\Entity\\Commerce\::hydrate\(\) should return BambooPayment\\Entity\\Commerce but returns BambooPayment\\Entity\\BambooPaymentObject.#'
-        - '#Method BambooPayment\\Entity\\Customer\::hydrate\(\) should return \$this\(BambooPayment\\Entity\\Customer\) but returns BambooPayment\\Entity\\BambooPaymentObject.#'
         - '#Method BambooPayment\\Service\\PurchaseService\::refund\(\) should return BambooPayment\\Entity\\Purchase but returns BambooPayment\\Entity\\BambooPaymentObject.#'
         - '#Method BambooPayment\\Service\\PurchaseService\::rollback\(\) should return BambooPayment\\Entity\\Purchase but returns BambooPayment\\Entity\\BambooPaymentObject.#'
         - '#Method BambooPayment\\Service\\PurchaseService\::commit\(\) should return BambooPayment\\Entity\\Purchase but returns BambooPayment\\Entity\\BambooPaymentObject.#'
-        - '#Method BambooPayment\\Entity\\Purchase\::hydrate\(\) should return \$this\(BambooPayment\\Entity\\Purchase\) but returns BambooPayment\\Entity\\BambooPaymentObject.#'
-        - '#Method BambooPayment\\Entity\\Transaction\::hydrate\(\) should return BambooPayment\\Entity\\Transaction but returns BambooPayment\\Entity\\BambooPaymentObject.#'
-        - '#Parameter \#2 \$transactionStep of method BambooPaymentTests\\SharedData\::makeTestOfTransactionStep\(\) expects BambooPayment\\Entity\\TransactionStep, BambooPayment\\Entity\\BambooPaymentObject given.#'
+        - '#Method BambooPayment\\Entity\\BambooPaymentObject\::getObjectClass\(\) should return \$this\(BambooPayment\\Entity\\BambooPaymentObject\) but returns BambooPayment\\Entity\\BambooPaymentObject.#'
         - '#Variable method call on Psr\\Http\\Client\\ClientInterface.#'

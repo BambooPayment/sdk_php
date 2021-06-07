@@ -7,8 +7,7 @@ use GeneratedHydrator\GeneratedHydrator;
 use function get_class;
 
 /**
- * Class BambooPaymentObject
- * @package BambooPayment\Entity
+ * Class BambooPaymentObject.
  */
 class BambooPaymentObject
 {
@@ -25,6 +24,7 @@ class BambooPaymentObject
 
     /**
      * @param array $data
+     *
      * @return $this
      */
     public function hydrate(array $data): self
