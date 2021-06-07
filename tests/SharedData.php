@@ -18,6 +18,11 @@ use BambooPaymentTests\Entity\TransactionStepEntityTest;
  */
 class SharedData extends BaseTest
 {
+    protected function getEmptyData(): array
+    {
+        return [];
+    }
+
     /**
      * @return array
      */
