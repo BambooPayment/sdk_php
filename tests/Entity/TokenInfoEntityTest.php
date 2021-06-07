@@ -27,6 +27,8 @@ class TokenInfoEntityTest extends BaseTest
     {
         $tokenInfo = new TokenInfo();
         $data      = $this->getDataOfTokenInfo();
+
+        /** @var TokenInfo $tokenInfo */
         $tokenInfo = $tokenInfo->hydrate($data);
 
         self::assertEquals($data[self::TOKEN_ID], $tokenInfo->getTokenId());

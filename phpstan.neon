@@ -3,8 +3,13 @@ includes:
     - vendor/phpstan/phpstan-phpunit/extension.neon
     - vendor/phpstan/phpstan-phpunit/rules.neon
 parameters:
+    paths:
+        - tests/
     checkGenericClassInNonGenericObjectType: false
     checkMissingIterableValueType: false
     ignoreErrors:
-        - '#Variable method call on Psr\\Http\\Client\\ClientInterface.#'
-        - '#Method (.*) should return (.*) but returns BambooPayment\\Entity\\BambooPaymentObject.#'
+        - '#Parameter \#2 \$address of method BambooPaymentTests\\SharedData\::makeTestOfAddress\(\) expects BambooPayment\\Entity\\Address, BambooPayment\\Entity\\Address\|null given.#'
+        - '#Parameter \#2 \$transactionStep of method BambooPaymentTests\\SharedData\::makeTestOfTransactionStep\(\) expects BambooPayment\\Entity\\TransactionStep, BambooPayment\\Entity\\BambooPaymentObject given.#'
+        - '#Parameter \#2 \$address of method BambooPaymentTests\\SharedData\::makeTestOfAddress\(\) expects BambooPayment\\Entity\\Address, BambooPayment\\Entity\\BambooPaymentObject given.#'
+        - '#Call to method BambooPaymentTests\\SharedData\::getDataOfDataUy\(\) with incorrect case: getDataOfDataUY#'
+        - '#Offset 0 does not exist on array\|null.#'

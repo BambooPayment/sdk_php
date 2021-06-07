@@ -20,7 +20,7 @@ class RecurrentPaymentInfoEntityTest extends BaseTest
         $recurrentPaymentInfo = new RecurrentPaymentInfo();
         $data                 = $this->getDataOfRecurrentPaymentInfo();
 
-        /** @var RecurrentPaymentInfo $refund */
+        /** @var RecurrentPaymentInfo $recurrentPaymentInfo */
         $recurrentPaymentInfo = $recurrentPaymentInfo->hydrate($data);
 
         self::assertEquals($data[self::FIRST_TRANSACTION], $recurrentPaymentInfo->getFirstTransaction());

@@ -18,6 +18,11 @@ use BambooPaymentTests\Entity\TransactionStepEntityTest;
  */
 class SharedData extends BaseTest
 {
+    protected function getEmptyData(): array
+    {
+        return [];
+    }
+
     /**
      * @return array
      */
@@ -165,7 +170,7 @@ class SharedData extends BaseTest
         self::assertEquals($data[PaymentProfileEntityTest::DOCUMENT_TYPE_ID], $paymentProfile->getDocumentTypeId());
     }
 
-    protected function makeTestOfCustomer(array $data, $customer): void
+    protected function makeTestOfCustomer(array $data, Customer $customer): void
     {
         self::assertEquals($data[CustomerEntityTest::CUSTOMER_ID], $customer->getCustomerId());
         self::assertEquals($data[CustomerEntityTest::CREATED], $customer->getCreated());
