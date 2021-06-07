@@ -5,7 +5,7 @@
 namespace BambooPayment\Entity;
 
 /**
- * Class CommerceAction
+ * Class CommerceAction.
  */
 class CommerceAction extends BambooPaymentObject
 {

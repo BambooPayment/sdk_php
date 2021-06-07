@@ -33,6 +33,10 @@ class Transaction extends BambooPaymentObject
     /** @var TransactionStep[] */
     private $Steps;
 
+    /**
+     * @param array $data
+     * @return $this
+     */
     public function hydrate(array $data): self
     {
         $steps             = $data[self::STEPS] ?? [];
