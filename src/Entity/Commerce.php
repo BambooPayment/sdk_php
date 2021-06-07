@@ -34,6 +34,7 @@ class Commerce extends BambooPaymentObject
 
     /**
      * @param array $data
+     *
      * @return $this
      */
     public function hydrate(array $data): self

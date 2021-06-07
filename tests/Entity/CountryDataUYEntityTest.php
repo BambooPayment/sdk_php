@@ -23,8 +23,6 @@ class CountryDataUYEntityTest extends SharedData
 
         $dataUy = $dataUy->hydrate($data);
 
-        self::assertInstanceOf(CountryDataUY::class, $dataUy);
-
         $this->makeTestsOfDataOfDataUY($data, $dataUy);
 
     }

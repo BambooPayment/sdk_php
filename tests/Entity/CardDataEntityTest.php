@@ -25,7 +25,6 @@ class CardDataEntityTest extends BaseTest
         $data            = $this->getDataOfCardData();
         $cardData = $cardData->hydrate($data);
 
-        self::assertInstanceOf(CardData::class, $cardData);
         self::assertEquals($data[self::CARDHOLDER_NAME], $cardData->getCardholderName());
         self::assertEquals($data[self::PAN], $cardData->getPan());
         self::assertEquals($data[self::CVV], $cardData->getCVV());

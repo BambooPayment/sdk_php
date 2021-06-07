@@ -21,7 +21,6 @@ class CustomerActivationEntityTest extends BaseTest
         $data               = $this->getDataOfCustomerActivation();
         $customerActivation = $customerActivation->hydrate($data);
 
-        self::assertInstanceOf(CustomerActivation::class, $customerActivation);
         self::assertEquals($data[self::TOKEN], $customerActivation->getToken());
         self::assertEquals($data[self::ACTIVATION_CODE], $customerActivation->getActivationCode());
     }
