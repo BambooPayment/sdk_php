@@ -6,8 +6,15 @@ use GeneratedHydrator\Configuration;
 use GeneratedHydrator\GeneratedHydrator;
 use function get_class;
 
+/**
+ * Class BambooPaymentObject
+ * @package BambooPayment\Entity
+ */
 class BambooPaymentObject
 {
+    /**
+     * @return GeneratedHydrator
+     */
     private function getHydrator(): GeneratedHydrator
     {
         $config        = new Configuration(get_class($this));
@@ -16,6 +23,10 @@ class BambooPaymentObject
         return new $hydratorClass();
     }
 
+    /**
+     * @param array $data
+     * @return $this
+     */
     public function hydrate(array $data): self
     {
         $object = $this->getObjectClass();
@@ -26,11 +37,17 @@ class BambooPaymentObject
         return $object;
     }
 
+    /**
+     * @return array
+     */
     public function toArray(): array
     {
         return $this->getHydrator()->extract($this);
     }
 
+    /**
+     * @return $this
+     */
     private function getObjectClass(): self
     {
         $class = get_class($this);

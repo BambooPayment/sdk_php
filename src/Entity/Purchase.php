@@ -5,8 +5,7 @@
 namespace BambooPayment\Entity;
 
 /**
- * Class Purchase
- * @package BambooPayment\Entity
+ * Class Purchase.
  */
 class Purchase extends BambooPaymentObject
 {
@@ -102,6 +101,7 @@ class Purchase extends BambooPaymentObject
 
     /**
      * @param array $data
+     *
      * @return $this
      */
     public function hydrate(array $data): self

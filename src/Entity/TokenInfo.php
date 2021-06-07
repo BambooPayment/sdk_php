@@ -5,7 +5,7 @@
 namespace BambooPayment\Entity;
 
 /**
- * Class TokenInfo
+ * Class TokenInfo.
  */
 class TokenInfo extends BambooPaymentObject
 {

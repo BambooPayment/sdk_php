@@ -5,7 +5,7 @@
 namespace BambooPayment\Entity;
 
 /**
- * Class Notification
+ * Class Notification.
  */
 class Notification extends BambooPaymentObject
 {
