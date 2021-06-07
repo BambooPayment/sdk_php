@@ -5,11 +5,11 @@
 namespace BambooPayment\Entity;
 
 /**
- * Class RecurrentPaymentInfo
+ * Class RecurrentPaymentInfo.
  */
 class RecurrentPaymentInfo extends BambooPaymentObject
 {
-    /** @var string|boolean */
+    /** @var string|bool */
     private $FirstTransaction;
 
     /** @var string */

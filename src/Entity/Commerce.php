@@ -5,7 +5,7 @@
 namespace BambooPayment\Entity;
 
 /**
- * Class Commerce
+ * Class Commerce.
  */
 class Commerce extends BambooPaymentObject
 {
@@ -32,6 +32,10 @@ class Commerce extends BambooPaymentObject
     /** @var Address */
     private $Address;
 
+    /**
+     * @param array $data
+     * @return $this
+     */
     public function hydrate(array $data): self
     {
         if (null !== $data[self::ADDRESS]) {
