@@ -18,7 +18,6 @@ class CountryDataDOEntityTest extends BaseTest
 
         $dataDo = $dataDo->hydrate($data);
 
-        self::assertInstanceOf(CountryDataDO::class, $dataDo);
         self::assertEquals($data[self::INVOICE], $dataDo->getInvoice());
         self::assertEquals($data[self::TAX], $dataDo->getTax());
     }
