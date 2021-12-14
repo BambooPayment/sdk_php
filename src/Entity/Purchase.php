@@ -9,11 +9,12 @@ namespace BambooPayment\Entity;
  */
 class Purchase extends BambooPaymentObject
 {
-    public const CUSTOMER    = 'Customer';
-    public const TRANSACTION = 'Transaction';
-    public const DATA_UY     = 'DataUY';
-    public const DATA_DO     = 'DataDO';
-    public const REFUND_LIST = 'RefundList';
+    public const CUSTOMER        = 'Customer';
+    public const TRANSACTION     = 'Transaction';
+    public const DATA_UY         = 'DataUY';
+    public const DATA_DO         = 'DataDO';
+    public const COMMERCE_ACTION = 'CommerceAction';
+    public const REFUND_LIST     = 'RefundList';
 
     /** @var int */
     private $PurchaseId;
@@ -124,6 +125,11 @@ class Purchase extends BambooPaymentObject
         if (null !== $data[self::DATA_DO]) {
             $dataDo              = new CountryDataDO();
             $data[self::DATA_DO] = $dataDo->hydrate($data[self::DATA_DO]);
+        }
+
+        if (null !== $data[self::COMMERCE_ACTION]) {
+            $commerceAction              = new CommerceAction();
+            $data[self::COMMERCE_ACTION] = $commerceAction->hydrate($data[self::COMMERCE_ACTION]);
         }
 
         $refundHydrated = [];
@@ -332,9 +338,9 @@ class Purchase extends BambooPaymentObject
     }
 
     /**
-     * @return string|null
+     * @return CommerceAction|null
      */
-    public function getCommerceAction(): ?string
+    public function getCommerceAction(): ?CommerceAction
     {
         return $this->CommerceAction;
     }
