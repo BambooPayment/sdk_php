@@ -88,7 +88,7 @@ class Purchase extends BambooPaymentObject
     /** @var array */
     private $Acquirer;
 
-    /** @var string|null */
+    /** @var CommerceAction|null */
     private $CommerceAction;
 
     /** @var int */
