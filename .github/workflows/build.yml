@@ -28,4 +28,3 @@ jobs:
         run: |
           composer global require php-coveralls/php-coveralls
           php-coveralls -c .coveralls.github-actions.yml -v
-      - run: composer phpstan
