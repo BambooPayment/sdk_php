@@ -15,21 +15,12 @@ use function is_array;
 
 class ApiRequest
 {
-    private const STATUS_CODE_200 = 200;
-    private const STATUS_CODE_201 = 201;
-    private const STATUS_CODE_422 = 422;
-
-    private string $method;
-
-    private string $absUrl;
-
-    private array $params;
-
-    private array $headers;
-
-    private string $apiKey;
-
-    private static ?HttpClient $httpClient = null;
+    private $method;
+    private $absUrl;
+    private $params;
+    private $headers;
+    private $apiKey;
+    private static $httpClient;
 
     /**
      * ApiRequest constructor.
@@ -139,6 +130,7 @@ class ApiRequest
     private function handleErrorResponse(?array $body, int $code): void
     {
         $errorHandler = new ErrorHandler();
+
         try {
             if ($code === 404) {
                 throw new InvalidRequestException('Resource not found', $code, $body, null, null);

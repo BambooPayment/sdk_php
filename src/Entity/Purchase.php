@@ -105,7 +105,7 @@ class Purchase extends BambooPaymentObject
      *
      * @return $this
      */
-    public function hydrate(array $data): self
+    public function hydrate(array $data): BambooPaymentObject
     {
         if (null !== $data[self::TRANSACTION]) {
             $transaction             = new Transaction();

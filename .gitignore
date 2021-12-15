@@ -11,3 +11,4 @@ docker
 /.phpcs-cache
 /.phpunit.cache/
 clover.xml
+/.php-cs-fixer.cache

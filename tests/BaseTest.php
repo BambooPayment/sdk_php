@@ -5,7 +5,6 @@ namespace BambooPaymentTests;
 use BambooPayment\Core\ApiRequest;
 use BambooPayment\Core\ApiResponse;
 use BambooPayment\Core\BambooPaymentClient;
-use JsonException;
 use PHPUnit\Framework\TestCase;
 use function file_exists;
 use function file_get_contents;
@@ -14,11 +13,10 @@ use function json_decode;
 abstract class BaseTest extends TestCase
 {
     /**
-     * @param string   $filename
-     * @param string   $endpoint
+     * @param string $filename
+     * @param string $endpoint
      * @param int|null $statusCode
      * @return ApiRequest
-     * @throws JsonException
      */
     public function mockApiRequest(string $filename, string $endpoint, int $statusCode = null): ApiRequest
     {
@@ -33,8 +31,8 @@ abstract class BaseTest extends TestCase
     }
 
     /**
-     * @param string   $filename
-     * @param string   $endpoint
+     * @param string $filename
+     * @param string $endpoint
      * @param int|null $statusCode
      * @return BambooPaymentClient
      * @throws JsonException
@@ -60,7 +58,7 @@ abstract class BaseTest extends TestCase
         if (file_exists($filename)) {
             $fileContent = file_get_contents($filename);
             if ($fileContent !== false) {
-                $mockFile = json_decode($fileContent, true, 512, JSON_THROW_ON_ERROR);
+                $mockFile = json_decode($fileContent, true);
                 $data     = $mockFile[$endpoint]['data'];
             }
         }

@@ -6,10 +6,10 @@ use Exception;
 
 abstract class ApiErrorException extends Exception implements ExceptionInterface
 {
-    protected ?array $jsonBody;
-    protected ?string $requestId;
-    protected ?string $bambooPaymentCode;
-    protected ?string $bambooPaymentDetail;
+    protected $jsonBody;
+    protected $requestId;
+    protected $bambooPaymentCode;
+    protected $bambooPaymentDetail;
 
     /**
      * ApiErrorException constructor.

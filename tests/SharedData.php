@@ -126,7 +126,7 @@ class SharedData extends BaseTest
      * @param array           $transactionStepData
      * @param TransactionStep $transactionStep
      */
-    protected function makeTestOfTransactionStep(array $transactionStepData, $transactionStep): void
+    protected function makeTestOfTransactionStep(array $transactionStepData, TransactionStep $transactionStep): void
     {
         self::assertEquals($transactionStepData[TransactionStepEntityTest::STEP], $transactionStep->getStep());
         self::assertEquals($transactionStepData[TransactionStepEntityTest::CREATED], $transactionStep->getCreated());

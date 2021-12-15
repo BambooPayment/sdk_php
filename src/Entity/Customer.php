@@ -71,7 +71,7 @@ class Customer extends BambooPaymentObject
      *
      * @return $this
      */
-    public function hydrate(array $data): self
+    public function hydrate(array $data): BambooPaymentObject
     {
         $shippingAddress = $data['ShippingAddress'] ?? null;
         if ($shippingAddress !== null) {

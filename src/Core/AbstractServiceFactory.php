@@ -6,12 +6,12 @@ use function array_key_exists;
 
 abstract class AbstractServiceFactory
 {
-    private BambooPaymentClient $client;
+    private $client;
 
     /**
      * @var array<string, AbstractService|AbstractServiceFactory>
      */
-    private array $services;
+    private $services;
 
     /**
      * @var AbstractService|AbstractServiceFactory|null

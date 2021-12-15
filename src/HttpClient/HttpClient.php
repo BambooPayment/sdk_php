@@ -4,7 +4,6 @@ namespace BambooPayment\HttpClient;
 
 use BambooPayment\Exception\UnexpectedValueException;
 use GuzzleHttp\Client as GuzzleClient;
-use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\ResponseInterface;
 use function array_merge;
 use function is_callable;
@@ -12,7 +11,8 @@ use function strtolower;
 
 class HttpClient
 {
-    protected static ?HttpClient $instance = null;
+    protected static $instance;
+    protected $client;
 
     public static function instance(): ?HttpClient
     {
@@ -22,8 +22,6 @@ class HttpClient
 
         return self::$instance;
     }
-
-    protected ClientInterface $client;
 
     /**
      * @param \GuzzleHttp\Client|\Psr\Http\Client\ClientInterface $client
@@ -38,9 +36,6 @@ class HttpClient
         $this->client = new GuzzleClient();
     }
 
-    /**
-     * @throws \JsonException
-     */
     public function request(string $method, string $absUrl, array $headers, array $params): ResponseInterface
     {
         $method = strtolower($method);
@@ -54,7 +49,7 @@ class HttpClient
 
         if ($method === 'post') {
             $requestParams = [
-                'body' => \json_encode($params, JSON_THROW_ON_ERROR | JSON_FORCE_OBJECT)
+                'body' => \json_encode($params)
             ];
         }
 

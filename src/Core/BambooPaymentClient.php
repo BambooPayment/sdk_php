@@ -16,8 +16,8 @@ class BambooPaymentClient
     public const  ARRAY_ERROR_KEY          = 'Errors';
     public const  ARRAY_RESULT_KEY         = 'Response';
 
-    private ?CoreServiceFactory $coreServiceFactory = null;
-    private array $config;
+    private $coreServiceFactory;
+    private $config;
 
     /** * @var AbstractService|AbstractServiceFactory|null */
     private $data;

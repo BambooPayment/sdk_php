@@ -11,7 +11,7 @@ class CoreServiceFactory extends AbstractServiceFactory
      * Array of services that can be instantiate
      * @var array<string, string>
      */
-    private static array $CLASS_MAP
+    private static $CLASS_MAP
         = [
             'customers' => CustomerService::class,
             'purchases' => PurchaseService::class,

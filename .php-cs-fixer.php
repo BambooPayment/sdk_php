@@ -3,7 +3,9 @@
 $finder = PhpCsFixer\Finder::create()
     ->in([__DIR__ . '/src'], [__DIR__ . '/tests'], [__DIR__ . '/examples']);
 
-return PhpCsFixer\Config::create()
+$config = new PhpCsFixer\Config();
+
+return $config
     ->setRules(
         [
             '@PSR2'                                      => true,
@@ -15,7 +17,7 @@ return PhpCsFixer\Config::create()
                 ],
             ],
             'single_line_after_imports'                  => true,
-            'blank_line_before_return'                   => true,
+            'blank_line_before_statement'                => true,
             'cast_spaces'                                => true,
             'concat_space'                               => ['spacing' => 'one'],
             'no_singleline_whitespace_before_semicolons' => true,

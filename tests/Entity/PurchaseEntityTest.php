@@ -52,14 +52,6 @@ class PurchaseEntityTest extends SharedData
     private const APPROVAL_CODE           = TransactionEntityTest::APPROVAL_CODE;
     private const STEPS                   = TransactionEntityTest::STEPS;
 
-    /*** TransactionStepEntity attributes keys  ***/
-    private const STEP                    = TransactionStepEntityTest::STEP;
-    private const RESPONSE_CODE           = TransactionStepEntityTest::RESPONSE_CODE;
-    private const RESPONSE_MESSAGE        = TransactionStepEntityTest::RESPONSE_MESSAGE;
-    private const ERROR                   = TransactionStepEntityTest::ERROR;
-    private const AUTHORIZATION_CODE      = TransactionStepEntityTest::AUTHORIZATION_CODE;
-    private const ACQUIRE_RESPONSE_DETAIL = TransactionStepEntityTest::ACQUIRE_RESPONSE_DETAIL;
-
     /*** AddressEntity attributes keys  ***/
     public const ADDRESS_ID     = AddressEntityTest::ADDRESS_ID;
     public const ADDRESS_TYPE   = AddressEntityTest::ADDRESS_TYPE;

@@ -13,7 +13,7 @@ abstract class AbstractService
     /**
      * @var \BambooPayment\Core\BambooPaymentClient
      */
-    protected BambooPaymentClient $client;
+    protected $client;
 
     /**
      * AbstractService constructor.
