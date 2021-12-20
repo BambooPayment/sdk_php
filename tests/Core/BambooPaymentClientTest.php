@@ -3,11 +3,13 @@
 namespace BambooPaymentTests\Core;
 
 use BambooPayment\Core\ApiRequest;
+use BambooPayment\Core\ApiResponse;
 use BambooPayment\Core\BambooPaymentClient;
+use BambooPayment\ResponseInterpreter\ResponseInterpreterPCI;
 use BambooPayment\Service\CustomerService;
-use PHPUnit\Framework\TestCase;
+use BambooPaymentTests\BaseTest;
 
-class BambooPaymentClientTest extends TestCase
+class BambooPaymentClientTest extends BaseTest
 {
     public function testCreateWithoutKey(): void
     {
@@ -67,9 +69,9 @@ class BambooPaymentClientTest extends TestCase
             ]
         );
 
-        $apiRequestExpected = new ApiRequest('get', '/', [], '123456', 'https://testapi.siemprepago.com/', []);
+        $apiRequestExpected = new ApiRequest('get', '/', [], '123456', 'https://testapi.siemprepago.com/', [], new ResponseInterpreterPCI());
 
-        self::assertEquals($apiRequestExpected, $bambooPaymentClient->createApiRequest('get', '/'));
+        self::assertEquals($apiRequestExpected, $bambooPaymentClient->createApiRequest('get', '/', new ResponseInterpreterPCI()));
     }
 
     public function testCreateApiRequestWithPostMethod(): void
@@ -81,9 +83,9 @@ class BambooPaymentClientTest extends TestCase
             ]
         );
 
-        $apiRequestExpected = new ApiRequest('post', '/aaa', [], '123456', 'https://testapi.siemprepago.com/', []);
+        $apiRequestExpected = new ApiRequest('post', '/aaa', [], '123456', 'https://testapi.siemprepago.com/', [], new ResponseInterpreterPCI());
 
-        self::assertEquals($apiRequestExpected, $bambooPaymentClient->createApiRequest('post', '/aaa'));
+        self::assertEquals($apiRequestExpected, $bambooPaymentClient->createApiRequest('post', '/aaa', new ResponseInterpreterPCI()));
     }
 
     public function testGetService(): void
@@ -110,5 +112,22 @@ class BambooPaymentClientTest extends TestCase
 
         /* @phpstan-ignore-next-line */
         self::assertNull($bambooPaymentClient->aaa);
+    }
+
+    public function testRequestWithErrorCodeLowerThan200(): void
+    {
+        $apiRequest  = $this->createMock(ApiRequest::class);
+        $apiResponse = new ApiResponse($this->getMockData('customers', 'getCustomer'), 100);
+        $apiRequest->method('request')->willReturn($apiResponse);
+
+        $bambooPaymentClient = new BambooPaymentClient(
+            [
+                'api_key' => '123456',
+                'testing' => true
+            ]
+        );
+
+        $this->expectExceptionMessage('Invalid API route or response');
+        $bambooPaymentClient->request($apiRequest);
     }
 }

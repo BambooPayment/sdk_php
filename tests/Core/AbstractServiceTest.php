@@ -12,7 +12,8 @@ class AbstractServiceTest extends TestCase
         $bambooPaymentClient = $this->createMock(BambooPaymentClient::class);
         $service             = new DummyService($bambooPaymentClient);
 
-        self::assertNull($service->convertToBambooPaymentObject([]));
+        self::expectExceptionMessage('The class BambooPaymentTests\Core\DummyBambooObject does not exists');
+        $service->convertToBambooPaymentObject([]);
     }
 
 }

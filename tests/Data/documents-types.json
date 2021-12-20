@@ -1,0 +1,7 @@
+{
+  "documents-types": {
+    "data": "{    \"documentTypes\": [        {            \"id\": 1,            \"description\": \"RUT\",            \"abbreviation\": \"RUT\",            \"isPhysicalPerson\": false        },        {            \"id\": 2,            \"description\": \"Cédula de identidad\",            \"abbreviation\": \"CI\",            \"isPhysicalPerson\": true        },        {            \"id\": 3,            \"description\": \"Extranjero\",            \"abbreviation\": \"EXT\"        }    ],    \"isSuccess\": true}"
+  }
+}
+
+

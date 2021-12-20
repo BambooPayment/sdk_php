@@ -3,6 +3,8 @@
 namespace BambooPayment\Core;
 
 use BambooPayment\Exception\InvalidArgumentException;
+use BambooPayment\Exception\InvalidRequestException;
+use BambooPayment\ResponseInterpreter\ResponseInterpreterInterface;
 use function is_string;
 use function preg_match;
 
@@ -11,10 +13,9 @@ use function preg_match;
  */
 class BambooPaymentClient
 {
-    private const DEFAULT_API_BASE         = 'https://api.siemprepago.com/';
-    private const DEFAULT_API_TESTING_BASE = 'https://testapi.siemprepago.com/';
-    public const  ARRAY_ERROR_KEY          = 'Errors';
-    public const  ARRAY_RESULT_KEY         = 'Response';
+    private const DEFAULT_API_BASE                      = 'https://api.siemprepago.com/';
+    private const DEFAULT_API_TESTING_BASE              = 'https://testapi.siemprepago.com/';
+    private const DEFAULT_CHECKOUT_PRO_API_TESTING_BASE = 'https://h2h.stage.bamboopayment.com/';
 
     private $coreServiceFactory;
     private $config;
@@ -34,11 +35,20 @@ class BambooPaymentClient
             throw new InvalidArgumentException('Must provide a api key');
         }
 
+        $isCheckoutPro = $config['isCheckoutPro'] ?? false;
+        if ($isCheckoutPro) {
+            $config['isCheckoutPro'] = true;
+        }
+
         $config['api_base'] = self::DEFAULT_API_BASE;
 
         $isTestingMode = $config['testing'] ?? false;
         if ($isTestingMode) {
             $config['api_base'] = self::DEFAULT_API_TESTING_BASE;
+
+            if ($isCheckoutPro) {
+                $config['api_base'] = self::DEFAULT_CHECKOUT_PRO_API_TESTING_BASE;
+            }
         }
 
         $this->validateConfig($config);
@@ -77,7 +87,18 @@ class BambooPaymentClient
     {
         $apiResponse = $apiRequest->request();
 
-        return $apiRequest->interpretResponse($apiResponse);
+        $code = $apiResponse->code;
+        $body = $apiResponse->json;
+
+        if ($code === 404) {
+            throw new InvalidRequestException('Resource not found', $code, $body, null, null);
+        }
+
+        if ($body === null || $code < 200 || $code > 503) {
+            throw new InvalidRequestException('Invalid API route or response', $code, $body, null, null);
+        }
+
+        return $apiRequest->getApiInterpreterResponse()->interpretResponse($apiResponse);
     }
 
     /**
@@ -138,16 +159,22 @@ class BambooPaymentClient
      *
      * @param string $method
      * @param string $path
+     * @param \BambooPayment\ResponseInterpreter\ResponseInterpreterInterface $responseInterpreter
      * @param array|null $params
      *
      * @return ApiRequest
      */
-    public function createApiRequest(string $method, string $path, ?array $params = null): ApiRequest
-    {
+    public function createApiRequest(
+        string $method,
+        string $path,
+        ResponseInterpreterInterface $responseInterpreter,
+        ?array $params = null,
+        ?string $resultKey = null
+    ): ApiRequest {
         if ($params === null) {
             $params = [];
         }
 
-        return new ApiRequest($method, $path, $params, $this->getApiKey(), $this->getApiBase(), []);
+        return new ApiRequest($method, $path, $params, $this->getApiKey(), $this->getApiBase(), [], $responseInterpreter, $resultKey);
     }
 }

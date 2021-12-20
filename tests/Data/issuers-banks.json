@@ -1,0 +1,7 @@
+{
+  "issuers-banks": {
+    "data": "{\n    \"issuerBanks\": [\n        {\n            \"id\": 1,\n            \"name\": \"Santander\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"BBVA\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Itaú\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"HSBC\"\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Scotiabank\"\n        },\n        {\n            \"id\": 6,\n            \"name\": \"OCA\"\n        },\n        {\n            \"id\": 7,\n            \"name\": \"Visa\"\n        },\n        {\n            \"id\": 8,\n            \"name\": \"MasterCard\"\n        },\n        {\n            \"id\": 9,\n            \"name\": \"BROU\"\n        },\n        {\n            \"id\": 10,\n            \"name\": \"Santander Select\"\n        },\n        {\n            \"id\": 11,\n            \"name\": \"Prex\"\n        },\n        {\n            \"id\": 12,\n            \"name\": \"Midinero\"\n        }\n    ],\n    \"isSuccess\": true\n}"
+  }
+}
+
+

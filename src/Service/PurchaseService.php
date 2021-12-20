@@ -4,6 +4,8 @@ namespace BambooPayment\Service;
 
 use BambooPayment\Core\AbstractService;
 use BambooPayment\Entity\Purchase;
+use BambooPayment\ResponseInterpreter\ResponseInterpreterInterface;
+use BambooPayment\ResponseInterpreter\ResponseInterpreterPCI;
 
 /**
  * Class PurchaseService.
@@ -74,5 +76,10 @@ class PurchaseService extends AbstractService
     public function getEntityClass(): string
     {
         return Purchase::class;
+    }
+
+    public function getResponseInterpreter(): ResponseInterpreterInterface
+    {
+        return new ResponseInterpreterPCI();
     }
 }

@@ -2,7 +2,6 @@
 
 namespace BambooPaymentTests\Core;
 
-use BambooPayment\Core\BambooPaymentClient;
 use BambooPayment\Core\ErrorHandler;
 use BambooPayment\Exception\ApiBadParametersException;
 use BambooPayment\Exception\ApiConnectionException;
@@ -16,65 +15,66 @@ class ErrorHandlerTest extends TestCase
     public function testThrowApiBadParametersException(): void
     {
         $errorHandler = new ErrorHandler();
-        $body         = $this->getErrors();
         $exception    = new ApiBadParametersException('Error', 400, [], 'BP001', 'Error Detail');
 
         $this->expectExceptionObject($exception);
-        $errorHandler->handleErrorResponse($body, 400);
+
+        $errors = $this->getErrors();
+        $errorHandler->throwSpecificException(400, [], $errors['ErrorCode'], $errors['Message'], $errors['Detail']);
     }
 
     public function testThrowInvalidRequestException(): void
     {
         $errorHandler = new ErrorHandler();
-        $body         = $this->getErrors();
         $exception    = new InvalidRequestException('Error', 404, [], 'BP001', 'Error Detail');
 
         $this->expectExceptionObject($exception);
-        $errorHandler->handleErrorResponse($body, 404);
+
+        $errors = $this->getErrors();
+        $errorHandler->throwSpecificException(404, [], $errors['ErrorCode'], $errors['Message'], $errors['Detail']);
     }
 
     public function testThrowAuthenticationException(): void
     {
         $errorHandler = new ErrorHandler();
-        $body         = $this->getErrors();
         $exception    = new AuthenticationException('Error', 403, [], 'BP001', 'Error Detail');
 
         $this->expectExceptionObject($exception);
-        $errorHandler->handleErrorResponse($body, 403);
+
+        $errors = $this->getErrors();
+        $errorHandler->throwSpecificException(403, [], $errors['ErrorCode'], $errors['Message'], $errors['Detail']);
     }
 
     public function testThrowBadMethodCallException(): void
     {
         $errorHandler = new ErrorHandler();
-        $body         = $this->getErrors();
         $exception    = new BadMethodCallException('Error', 405);
 
         $this->expectExceptionObject($exception);
-        $errorHandler->handleErrorResponse($body, 405);
+
+        $errors = $this->getErrors();
+        $errorHandler->throwSpecificException(405, [], $errors['ErrorCode'], $errors['Message'], $errors['Detail']);
     }
 
 
     public function testThrowApiConnectionException(): void
     {
         $errorHandler = new ErrorHandler();
-        $body         = $this->getErrors();
         $exception    = new ApiConnectionException('Error', 408, [], 'BP001', 'Error Detail');
 
         $this->expectExceptionObject($exception);
-        $errorHandler->handleErrorResponse($body, 408);
+
+        $errors = $this->getErrors();
+        $errorHandler->throwSpecificException(408, [], $errors['ErrorCode'], $errors['Message'], $errors['Detail']);
     }
 
     private function getErrors(): array
     {
-        $body                                       = [];
-        $body[BambooPaymentClient::ARRAY_ERROR_KEY] = [
-            [
-                'ErrorCode' => 'BP001',
-                'Message'   => 'Error',
-                'Detail'    => 'Error Detail',
-            ]
+        return [
+            'ErrorCode' => 'BP001',
+            'Message'   => 'Error',
+            'Detail'    => 'Error Detail',
         ];
-        return $body;
     }
 
 }

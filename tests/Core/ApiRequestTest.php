@@ -5,6 +5,8 @@ namespace BambooPaymentTests\Core;
 use BambooPayment\Core\ApiRequest;
 use BambooPayment\Core\ApiResponse;
 use BambooPayment\HttpClient\HttpClient;
+use BambooPayment\ResponseInterpreter\ResponseInterpreterCheckoutPro;
+use BambooPayment\ResponseInterpreter\ResponseInterpreterPCI;
 use BambooPaymentTests\BaseTest;
 use GuzzleHttp\Psr7\Response;
 
@@ -14,7 +16,7 @@ class ApiRequestTest extends BaseTest
     {
         $apiRequest = $this->getMockBuilder(ApiRequest::class)
             ->enableOriginalConstructor()
-            ->setConstructorArgs(['get', '/api', [], '123456', 'https://testapi.siemprepago.com/', []])
+            ->setConstructorArgs(['get', '/api', [], '123456', 'https://testapi.siemprepago.com/', [], new ResponseInterpreterPCI()])
             ->setMethods(['httpClient'])
             ->getMock();
 
@@ -31,20 +33,20 @@ class ApiRequestTest extends BaseTest
 
     public function testGetHttpClient(): void
     {
-        $apiRequest = new ApiRequest('get', '/api', [], '123456', 'https://testapi.siemprepago.com/', []);
+        $apiRequest = new ApiRequest('get', '/api', [], '123456', 'https://testapi.siemprepago.com/', [], new ResponseInterpreterPCI());
         $apiRequest->httpClient();
-        
+
         /* @phpstan-ignore-next-line */
         self::assertTrue(true);
     }
 
     public function testInterpretResponse(): void
     {
-        $apiRequest = new ApiRequest('get', '/api', [], '123456', 'https://testapi.siemprepago.com/', []);
+        $apiRequest = new ApiRequest('get', '/api', [], '123456', 'https://testapi.siemprepago.com/', [], new ResponseInterpreterPCI());
 
         $apiResponse = new ApiResponse($this->getMockData('customers', 'getCustomer'), 200);
 
-        $result = $apiRequest->interpretResponse($apiResponse);
+        $result = $apiRequest->getApiInterpreterResponse()->interpretResponse($apiResponse);
 
         self::assertEquals(
             [
@@ -80,14 +82,23 @@ class ApiRequestTest extends BaseTest
         );
     }
 
-    public function testInterpretResponseWithErrorCodeLowerThan200(): void
+    public function testInterpretResponseCheckoutPro(): void
     {
-        $apiRequest = new ApiRequest('get', '/api', [], '123456', 'https://testapi.siemprepago.com/', []);
+        $apiRequest = new ApiRequest('get', '/api', [], '123456', 'https://testapi.siemprepago.com/', [], new ResponseInterpreterCheckoutPro());
 
-        $apiResponse = new ApiResponse($this->getMockData('customers', 'getCustomer'), 100);
+        $apiResponse = new ApiResponse($this->getMockData('payments', 'create'), 200);
 
-        $this->expectExceptionMessage('Invalid API route or response');
-        $apiRequest->interpretResponse($apiResponse);
+        $result = $apiRequest->getApiInterpreterResponse()->interpretResponse($apiResponse);
+
+        self::assertEquals(
+            [
+                'isSuccess'       => true,
+                'paymentId'       => '2eb54485-33a9-4466-926c-4282dd443630',
+                'redirectUrl'     => 'https://checkout.bamboopayment.com/#/?paymentId=2eb54485-33a9-4466-926c-4282dd443630',
+                'validForMinutes' => 10,
+                'errors'          => []
+            ],
+            $result
+        );
     }
-
 }

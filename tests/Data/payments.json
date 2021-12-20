@@ -1,0 +1,13 @@
+{
+  "create": {
+    "data": "{\"isSuccess\": true, \"errors\": [ ], \"paymentId\": \"2eb54485-33a9-4466-926c-4282dd443630\", \"redirectUrl\": \"https://checkout.bamboopayment.com/#/?paymentId=2eb54485-33a9-4466-926c-4282dd443630\", \"validForMinutes\": 10}"
+  },
+  "payment-status": {
+    "data": "{    \"paymentStatus\": \"completed\",    \"transactionStatus\": \"approved\",    \"purchaseId\": 123789,    \"isSuccess\": true,    \"errors\": []}"
+  },
+  "refund": {
+    "data": "{\"status\": \"success\",    \"isSuccess\": true,    \"errors\": []}"
+  }
+}
+
+

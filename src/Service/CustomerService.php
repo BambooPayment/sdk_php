@@ -4,6 +4,8 @@ namespace BambooPayment\Service;
 
 use BambooPayment\Core\AbstractService;
 use BambooPayment\Entity\Customer;
+use BambooPayment\ResponseInterpreter\ResponseInterpreterInterface;
+use BambooPayment\ResponseInterpreter\ResponseInterpreterPCI;
 
 class CustomerService extends AbstractService
 {
@@ -40,5 +42,10 @@ class CustomerService extends AbstractService
                 'PaymentProfileId' => $paymentProfileId
             ]
         );
+    }
+
+    public function getResponseInterpreter(): ResponseInterpreterInterface
+    {
+        return new ResponseInterpreterPCI();
     }
 }

@@ -1,0 +1,10 @@
+{
+  "all": {
+    "data": "{\"countries\": [  {    \"id\": 1,    \"name\": \"Uruguay\",    \"isoCode\": \"UY\",    \"phonePrefix\": \"+598\",    \"keywords\": \"uruguay,urujuay,uy,uru,ury\"  },  {    \"id\": 2,    \"name\": \"República Dominicana\",    \"isoCode\": \"DO\",    \"phonePrefix\": \"+1\"  },  {    \"id\": 3,    \"name\": \"Aland Islands\",    \"isoCode\": \"AX\"  }],\"isSuccess\": true}"
+  },
+  "fetch": {
+    "data": "{ \"country\": {     \"id\": 1,     \"name\": \"Uruguay\",     \"isoCode\": \"UY\",     \"phonePrefix\": \"+598\",     \"keywords\": \"uruguay,urujuay,uy,uru,ury\",     \"documentTypes\": [         {             \"id\": 1,             \"description\": \"RUT\",             \"abbreviation\": \"RUT\",             \"isPhysicalPerson\": false         },         {             \"id\": 2,             \"description\": \"Cédula de identidad\",             \"abbreviation\": \"CI\",             \"isPhysicalPerson\": true         },         {             \"id\": 3,             \"description\": \"Extranjero\",             \"abbreviation\": \"EXT\"         }     ] }, \"isSuccess\": true}"
+  }
+}
+
+
